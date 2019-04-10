@@ -7,22 +7,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="Share"
+        android:text="Chia sẽ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="https://www.facebook.com/sonhan997"
+        android:text="https://duytan.edu.vn/"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="18sp"
         android:id="@+id/tv_link"/>
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:id="@+id/img_share"/>
+    <!--   <ImageView
+           android:layout_width="300dp"
+           android:layout_height="300dp"
+           android:layout_marginTop="20dp"
+           android:layout_gravity="center"
+           android:id="@+id/img_share"/>-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:id="@+id/btn_share_image"
         android:background="#3b5998"
         android:textColor="@android:color/white"
-        android:text="Share Facebook Image"/>
+        android:text="CHIA SẼ TRANG LUYỆN THI ĐẠI HỌC DUY TÂN"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         android:id="@+id/btn_share_link"
         android:background="#3b5998"
         android:textColor="@android:color/white"
-        android:text="Share Facebook Link"/>
+        android:text="Chia sẽ trang thông tin tuyển sinh"/>
     <com.facebook.login.widget.LoginButton
         android:id="@+id/btnLoginFb"
         android:layout_width="150dp"

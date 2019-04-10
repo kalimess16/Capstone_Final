@@ -127,8 +127,7 @@ public class MainActivity_Chinh extends AppCompatActivity
         } else if (id == R.id.nav_tu_van) {
             fragment = new TuVan();
         } else if (id == R.id.nav_share) {
-            fragment = new thongtintk();
-
+            startActivity(new Intent(this, Share.class));
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             LoginManager.getInstance().logOut();

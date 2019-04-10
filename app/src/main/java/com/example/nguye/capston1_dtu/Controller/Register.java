@@ -66,9 +66,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
     }
     private  void Dangki(){
-        String email = textInputEmail.getEditText().getText().toString().trim();
-        String password = textInputPassword.getEditText().getText().toString().trim();
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        final String email = textInputEmail.getEditText().getText().toString().trim();
+        final String password = textInputPassword.getEditText().getText().toString().trim();
+        final String cfpassword = textInputConfirmPassword.getEditText().getText().toString().trim();
+        String email1 = textInputEmail.getEditText().getText().toString().trim();
+        String password1 = textInputPassword.getEditText().getText().toString().trim();
+        mAuth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -79,6 +82,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                                 Toast.makeText(Register.this, "ĐĂNG KÍ TÀI KHOẢN THÀNH CÔNG, VÀO EMAIL CỦA BẠN ĐỂ XÁC NHẬN ĐĂNG KÍ",
                                         Toast.LENGTH_LONG).show();
                                 btnDangNhap.setText("Trờ về đăng nhập");
+                                DangkiRealtime(email,password,cfpassword);
                             }else{
                                 Toast.makeText(Register.this,  task.getException().getMessage(),
                                         Toast.LENGTH_LONG).show();
@@ -106,18 +110,18 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     && validate.validatePassword(password, textInputPassword)
                     && validate.validateConfirmPassword(password,cfpassword,textInputConfirmPassword)){
                 Dangki();
-                DangkiRealtime(email,password,cfpassword);
+//                DangkiRealtime(email,password,cfpassword);
                 return;
             }
             if(validate.validatePassword(password,textInputPassword)){
                 Dangki();
-                DangkiRealtime(email,password,cfpassword);
+//                DangkiRealtime(email,password,cfpassword);
                 return;
 
             }
             if(validate.validateConfirmPassword(password,cfpassword,textInputConfirmPassword)){
                 Dangki();
-                DangkiRealtime(email,password,cfpassword);
+//                DangkiRealtime(email,password,cfpassword);
                 return;
 
             }
