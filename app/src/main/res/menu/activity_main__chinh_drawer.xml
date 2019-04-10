@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_homePage"
+            android:icon="@drawable/ic_action_home"
+            android:title="TRANG CHỦ" />
+        <item
+            android:id="@+id/nav_cong_thuc"
+            android:icon="@drawable/ic_action_viewcongthuc"
+            android:title="CÔNG THỨC" />
+        <item
+            android:id="@+id/nav_bai_hoc"
+            android:icon="@drawable/ic_action_baihoc"
+            android:title="BÀI HỌC" />
+        <item
+            android:id="@+id/nav_test"
+            android:icon="@drawable/ic_action_test"
+            android:title="BÀI KIỂM TRA" />
+        <item
+            android:id="@+id/nav_tu_van"
+            android:icon="@drawable/ic_action_tuvan"
+            android:title="TƯ VẤN"
+        />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="CHIA SẼ" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@mipmap/ic_laucher_dangxuat"
+                android:title="ĐĂNG XUẤT"/>
+
+        </menu>
+    </item>
+
+</menu>
