@@ -46,7 +46,6 @@ public class thongtintk extends Fragment implements setOnItemClick {
         mAuth = FirebaseAuth.getInstance();
         btnXem = view.findViewById(R.id.btnXemTTTK);
         btnShare= view.findViewById(R.id.button2SHARE);
-        btnLogout=view.findViewById(R.id.btnLogout);
         btnXem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,34 +59,8 @@ public class thongtintk extends Fragment implements setOnItemClick {
                 startActivity(new Intent(getActivity(), Share.class));
             }
         });
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
 
-                signOutFB();
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-            }
-        });
     }
-    private void signOut() {
-        // Firebase sign out
-
-
-        // Google sign out
-        mGoogle.signOut().addOnCompleteListener((Executor) this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        updateUI(null);
-                    }
-                });
-    }
-    public void signOutFB() {
-
-        LoginManager.getInstance().logOut();
-    }
-
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity(), viewThongtintaikhoan.class);
@@ -96,18 +69,6 @@ public class thongtintk extends Fragment implements setOnItemClick {
         startActivity(ABC);
     }
 
-    private void updateUI(FirebaseUser user) {
-
-        if (user != null) {
-
-        } else {
-
-        }
-    }
-   /* public void onItemClick(int position) {
-        Intent intent = new Intent(getActivity(), viewThongtintaikhoan.class);
-        startActivity(intent);
-    }*/
 
 
 

@@ -8,20 +8,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nguye.capston1_dtu.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.login.LoginResult;
+import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.ShareMessengerMediaTemplateContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.MessageDialog;
 import com.facebook.share.widget.ShareDialog;
 
 import java.io.IOException;
@@ -50,7 +55,6 @@ public class Share extends AppCompatActivity {
     }
 
     public void runTimePermission() {
-
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -82,7 +86,7 @@ public class Share extends AppCompatActivity {
         }
     }
     private void addEvent() {
-        imgShare.setOnClickListener(new View.OnClickListener() {
+       /* imgShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 runTimePermission();
@@ -90,26 +94,30 @@ public class Share extends AppCompatActivity {
                 intent.setType("image/*");
                 startActivityForResult(intent, 0);
             }
-        });
+        });*/
         btnShareImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String caption ="";
-                SharePhoto photo = new SharePhoto.Builder()
-                        .setBitmap(bitmap)
-                        .build();
-                SharePhotoContent content = new SharePhotoContent.Builder()
-                        .addPhoto(photo)
+                ShareLinkContent content = new ShareLinkContent.Builder()
+                        .setContentUrl(Uri.parse("http://luyenthi.duytan.edu.vn/"))
+                        .setQuote("TRANG LUYỆN THI ĐẠI HỌC DUY TÂN")
+                        .setShareHashtag(new ShareHashtag.Builder()
+                                .setHashtag("#LUYENTHIDUYTAN")
+                                .build())
                         .build();
                 getShareDialog().show(content);
             }
         });
-
         btnShareLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 ShareLinkContent content = new ShareLinkContent.Builder()
-                        .setContentUrl(Uri.parse("https://developers.facebook.com"))
+                        .setContentUrl(Uri.parse("https://duytan.edu.vn/tuyen-sinh/Page/Home.aspx"))
+                        .setQuote("ĐẠI HỌC DUY TÂN")
+                        .setShareHashtag(new ShareHashtag.Builder()
+                                .setHashtag("#TUYENSINHDUYTAN")
+                                .build())
                         .build();
                 getShareDialog().show(content);
             }
@@ -117,9 +125,9 @@ public class Share extends AppCompatActivity {
     }
     private void addControl() {
         tvLinkShare = (TextView) findViewById(R.id.tv_link);
-        btnShareImage = (Button) findViewById(R.id.btn_share_image);
+        btnShareImage= findViewById(R.id.btn_share_image);
         btnShareLink = (Button) findViewById(R.id.btn_share_link);
-        imgShare = (ImageView) findViewById(R.id.img_share);
+//        imgShare = (ImageView) findViewById(R.id.img_share);
     }
 
 }

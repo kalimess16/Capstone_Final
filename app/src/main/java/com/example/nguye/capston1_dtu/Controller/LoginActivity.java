@@ -98,8 +98,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(firebaseUser==null){
             FacebookSdk.sdkInitialize(getApplicationContext());
             textInputEmail.getEditText().setText(null);
-            callbackManager = CallbackManager.Factory.create();
-            loginButton.setReadPermissions(Arrays.asList("email"));
+//            callbackManager = CallbackManager.Factory.create();
+//            loginButton.setReadPermissions(Arrays.asList("email"));
         }
         else{
             textInputEmail.getEditText().setText(firebaseUser.getEmail());

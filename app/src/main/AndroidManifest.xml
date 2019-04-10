@@ -17,8 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controller.PhanLoaiDe"
-            android:label="@string/lesson"></activity>
+        <activity android:name=".Controller.Chatmail"></activity>
+        <activity
+            android:name=".Controller.PhanLoaiDe"
+            android:label="@string/lesson" />
         <activity android:name=".Controller.Share" />
         <activity android:name=".Controller.forgot_password" />
         <activity android:name=".Controller.viewThongtintaikhoan" />
@@ -33,8 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controller.LoaiCongThuc"
-            android:label="@string/formula"/>
+        <activity
+            android:name=".Controller.LoaiCongThuc"
+            android:label="@string/formula" />
         <activity
             android:name=".Controller.List_Image_cong_thuc"
             android:label="@string/formula" />
