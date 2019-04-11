@@ -8,9 +8,11 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nguye.capston1_dtu.Model.City;
 import com.example.nguye.capston1_dtu.Model.User;
 import com.example.nguye.capston1_dtu.R;
 import com.example.nguye.capston1_dtu.common.Validate;
@@ -21,9 +23,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class Register extends AppCompatActivity implements View.OnClickListener{
 
     private TextView textViewDK,btnDangNhap;
+    ArrayList<City> listCity;
+    private Spinner SpinnerCity;
     private Button btnDangKi;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
@@ -63,6 +69,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         textInputEmail = findViewById(R.id.textInput_Email);
         textInputPassword=findViewById(R.id.textInput_Password);
         textInputConfirmPassword=findViewById(R.id.textInputConfirm_Password);
+
 
     }
     private  void Dangki(){

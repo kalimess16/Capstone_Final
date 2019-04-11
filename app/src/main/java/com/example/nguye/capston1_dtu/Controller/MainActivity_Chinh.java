@@ -125,7 +125,7 @@ public class MainActivity_Chinh extends AppCompatActivity
         } else if (id == R.id.nav_test) {
             fragment = new TesT_List();
         } else if (id == R.id.nav_tu_van) {
-            fragment = new TuVan();
+            startActivity(new Intent(this, Chatmail.class));
         } else if (id == R.id.nav_share) {
             startActivity(new Intent(this, Share.class));
         } else if (id == R.id.nav_logout) {
