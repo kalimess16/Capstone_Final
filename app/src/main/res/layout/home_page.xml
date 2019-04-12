@@ -30,8 +30,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Khoa đào tạo Quốc Tế"
+            android:text="ĐC:254 Nguyễn Văn Linh - TP.Đà Nẵng"
             android:textColor="#090808"
-            android:textSize="30dp" />
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Email: tuyensinh@dtu.edu.vn"
+            android:textColor="#090808"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="ĐT: 02363.650403 - 02363.653561"
+            android:textColor="#090808"
+            android:textSize="18dp" />
+
     </LinearLayout>
 </RelativeLayout>

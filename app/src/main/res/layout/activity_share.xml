@@ -1,22 +1,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/nen"
     android:id="@+id/activity_share"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="15dp">
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:text="Chia Sẽ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
-    <TextView
-        android:text="Chia sẽ"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="https://duytan.edu.vn/"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="18sp"
-        android:id="@+id/tv_link"/>
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="https://duytan.edu.vn/"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18sp"
+            android:id="@+id/tv_link"/>
+    </LinearLayout>
+
     <!--   <ImageView
            android:layout_width="300dp"
            android:layout_height="300dp"
@@ -39,17 +57,24 @@
         android:background="#3b5998"
         android:textColor="@android:color/white"
         android:text="Chia sẽ trang thông tin tuyển sinh"/>
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/btnLoginFb"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="#3b5998"
-        android:onClick="buttonClickFB"
-        android:text="Login FaceBook"
-        android:textColor="#fff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGoogle" />
+   <LinearLayout
+       android:layout_marginTop="5sp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center">
+       <com.facebook.login.widget.LoginButton
+           android:layout_marginBottom="10sp"
+           android:id="@+id/btnLoginFb"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_marginTop="8dp"
+           android:background="#3b5998"
+           android:onClick="buttonClickFB"
+           android:text="Login FaceBook"
+           android:textColor="#fff"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/btnGoogle" />
 
+   </LinearLayout>
 </LinearLayout>

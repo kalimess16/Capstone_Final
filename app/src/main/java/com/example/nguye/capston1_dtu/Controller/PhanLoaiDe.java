@@ -29,7 +29,7 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phan_loai_de);
-        Toolbar toolbar = findViewById(R.id.toolbar_loaiCongTHuc);
+        Toolbar toolbar = findViewById(R.id.toolbar_loaiDe);
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();

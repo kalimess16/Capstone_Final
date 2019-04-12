@@ -24,8 +24,6 @@
         <activity android:name=".Controller.Share" />
         <activity android:name=".Controller.forgot_password" />
         <activity android:name=".Controller.viewThongtintaikhoan" />
-        <activity android:name=".Controller.profileHome" />
-        <activity android:name=".Controller.profile" />
         <activity android:name=".Controller.Register" />
         <activity android:name=".Controller.MainActivity_Chinh" />
         <activity android:name=".Controller.LoginActivity">
