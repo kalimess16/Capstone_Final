@@ -1,30 +1,21 @@
 package com.example.nguye.capston1_dtu.Model;
 
 public class City {
-    private int view;
+
     private String name;
-
-    public City(int view, String name) {
-        this.view = view;
-        this.name = name;
-    }
-
-    public City() {
-    }
-
-    public int getView() {
-        return view;
-    }
-
-    public void setView(int view) {
-        this.view = view;
-    }
-
+    private int categoryID;
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
+    public int getCategoryId() {
+        return categoryID;
+    }
+    public City(String name, int categoryID) {
         this.name = name;
+        this.categoryID = categoryID;
+    }
+    @Override
+    public String toString() {
+        return name;
     }
 }
