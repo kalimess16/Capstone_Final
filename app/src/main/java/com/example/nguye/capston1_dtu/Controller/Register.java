@@ -40,7 +40,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     private ArrayList<City> mCityList;
     private CityAdapter mAdapter;
     ArrayAdapter<City> cityArrayAdapter;
-    String[] categories={"Tất cả","Đà Nẵng","Hà Nội"};
+    String[] categories={"Tất cả","Đà Nẵng","Quảng Nam"};
 
     private TextView textViewDK,btnDangNhap;
 
@@ -93,6 +93,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 //        Log.e("abc",SpinnerCity.toString());
     }
 
+/**chọn dữ liệu từ spinner*/
     private void getSelectedCategoryData(int categoryID) {
 //arraylist to hold selected cosmic bodies
         ArrayList<City> citySchool = new ArrayList<>();
@@ -112,7 +113,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 //set the adapter to GridView
         myListView.setAdapter(cityArrayAdapter);
     }
-
+/**Load dữ liệu lên 2 Spinner*/
     private void initializeViews() {
         SpinnerCity = findViewById(R.id.spinnerCity);
         SpinnerCity.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories));
@@ -133,17 +134,64 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             }
         });
     }
+    /**List các trường*/
     private ArrayList<City> getSchool() {
         ArrayList<City> data = new ArrayList<>();
         data.clear();
         data.add(new City("THPT Thái Phiên",1));
+        data.add(new City("THPT Diên Hồng",1));
         data.add(new City("THPT Trần Phú",1));
         data.add(new City("THPT Nguyễn Hiền",1));
         data.add(new City("THPT Phan Châu Trinh",1));
         data.add(new City("THPT SkyLine",1));
         data.add(new City("THPT Thanh Khê",1));
         data.add(new City("THPT Ngô Quyền",1));
-        data.add(new City("THPT Hai Bà Trưng",2));
+        data.add(new City("THPT Quang Trung",1));
+        data.add(new City("THPT Hoàng Hoa Thám",1));
+        data.add(new City("THPT Chuyên Lê Quý Đôn",1));
+        data.add(new City("THPT Tôn Thất Tùng",1));
+        data.add(new City("THPT Ngũ Hành Sơn",1));
+        data.add(new City("PTDL Hermann Gmeiner",1));
+        data.add(new City("THPT TT Khai Trí",1));
+        data.add(new City("THPT Nguyễn Trãi",1));
+        data.add(new City("THPT Nguyễn Thượng Hiền",1));
+        data.add(new City("THPT Ông Ích Khiêm",1));
+        data.add(new City("THPT Phan Thành Tài",1));
+        data.add(new City("THPT Phạm Phú Thứ",1));
+        data.add(new City("THPT Hòa Vang",1));
+        data.add(new City("THPT Hiển Nhân",1));
+        data.add(new City("THPT Cẩm Lệ",1));
+
+        data.add(new City("THPT Lê Quý Đôn",2));
+        data.add(new City("THPT Trần Cao Vân",2));
+        data.add(new City("THPT Phan Bội Châu",2));
+        data.add(new City("THPT Duy Tân",2));
+        data.add(new City("THPT Tư thục Hà Huy Tập",2));
+        data.add(new City("THPT Chuyên Nguyễn Bỉnh Khiêm",2));
+        data.add(new City("THPT Trần Hưng Đạo",2));
+        data.add(new City("THPT Nguyễn Trãi",2));
+        data.add(new City("PTDT Nội trú tỉnh Quảng Nam",2));
+        data.add(new City("THPT Chuyên Lê Thánh Tông",2));
+        data.add(new City("THPT Trần Quý Cáp",2));
+        data.add(new City("THPT Sào Nam",2));
+        data.add(new City("THPT Lê Hồng Phong",2));
+        data.add(new City("THPT Nguyễn Hiền",2));
+        data.add(new City("PT nhiều cấp học Quảng Đông",2));
+        data.add(new City("PT nhiều cấp học Hoàng Sa",2));
+        data.add(new City("THPT Nguyễn Duy Hiệu",2));
+        data.add(new City("THPT Hoàng Diệu",2));
+        data.add(new City("THPT Phạm Phú Thứ",2));
+        data.add(new City("THPT Lương Thế Vinh",2));
+        data.add(new City("THPT Lương Thúc Kỳ",2));
+        data.add(new City("THPT Đỗ Đăng Tuyển",2));
+        data.add(new City("THPT Huỳnh Ngọc Huệ",2));
+        data.add(new City("THPT Chu Văn An",2));
+        data.add(new City("THPT Nguyễn Văn Cừ",2));
+        data.add(new City("THPT Trần Đại Nghĩa",2));
+        data.add(new City("THPT Quế Sơn",2));
+        data.add(new City("THPT TT Phạm Văn Đồng",2));
+        data.add(new City("THPT Hiệp Đức",2));
+        data.add(new City("THPT Trần Phú",2));
         return data;
     }
 
