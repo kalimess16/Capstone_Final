@@ -359,7 +359,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
             }
         }
         /** load de 5*/
-        else if (name.equals("Toan de thi 5")) {
+       /* else if (name.equals("Toan de thi 5")) {
             if (isOnline()) {
                 myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 5");
                 final Question[] question = {null};
@@ -398,7 +398,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
             } else {
                 Toast.makeText(getApplicationContext(),"Ko co internet",Toast.LENGTH_LONG).show();
             }
-        }
+        }*/
         /** cac de con lai*/
         else {
             Toast.makeText(getApplicationContext(), "Fixing", Toast.LENGTH_LONG).show();
@@ -522,6 +522,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
         @Override
         public void onFinish() {
             tvTimer.setText("00:00");
+            result();
         }
     }
 }

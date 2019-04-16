@@ -96,7 +96,7 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
 
         else  if (name.equals("Đề mẫu Toán số 2")){
             if (isOnline()){
-                mRefence = mDatabase.getReference("Mon Hoc").child("Toan").child("Bai Hoc").child("Đề số 2");
+                mRefence = mDatabase.getReference("Mon Hoc").child("Toan").child("Bai Hoc").child("đề số 2");
                 final Hoc[] hocs = {null};
                 mRefence.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -120,7 +120,36 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
                 mImageView_BH.setVisibility(View.VISIBLE);
                 Toast.makeText(getApplicationContext(),"Vui long Ket noi InterNet",Toast.LENGTH_LONG).show();
             }
-        }else{
+        }
+        /** lấy đề số 3 từ firebase*/
+        else  if (name.equals("Đề mẫu Toán số 3")){
+            if (isOnline()){
+                mRefence = mDatabase.getReference("Mon Hoc").child("Toan").child("Bai Hoc").child("đề số 3");
+                final Hoc[] hocs = {null};
+                mRefence.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                            String image = (String) snapshot.child("image").getValue();
+                            hocs[0] = new Hoc(image);
+                            listHoc.add(hocs[0]);
+                        }
+                        mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this,listHoc);
+                        mRev.setAdapter(mBaiHocAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.d("Fail_BH","ko connect dc vs Firebase");
+                        Toast.makeText(getApplicationContext(),"Fail connection",Toast.LENGTH_LONG).show();
+                    }
+                });
+            }else {
+                mImageView_BH.setVisibility(View.VISIBLE);
+                Toast.makeText(getApplicationContext(),"Vui long Ket noi InterNet",Toast.LENGTH_LONG).show();
+            }
+        }
+        else{
             Toast.makeText(getApplicationContext(),"dang cap nhat",Toast.LENGTH_LONG).show();
         }
     }

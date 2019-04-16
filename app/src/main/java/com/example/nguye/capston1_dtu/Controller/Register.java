@@ -104,6 +104,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             }
         });
     }
+
+    /** thêm cái jj */
     @Override
     public void onClick(View v) {
         Validate validate = new Validate();

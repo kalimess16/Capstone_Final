@@ -22,7 +22,8 @@
             android:name=".Controller.PhanLoaiDe"
             android:label="@string/lesson" />
         <activity android:name=".Controller.Share" />
-        <activity android:name=".Controller.forgot_password" />
+        <activity android:name=".Controller.forgot_password"
+            android:label="@string/QuenMatKhau"></activity>
         <activity android:name=".Controller.viewThongtintaikhoan" />
         <activity android:name=".Controller.Register" />
         <activity android:name=".Controller.MainActivity_Chinh" />

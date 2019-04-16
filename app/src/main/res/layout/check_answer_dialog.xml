@@ -2,11 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fcfac1"
+    android:background="@drawable/nen"
     android:orientation="vertical">
 
-
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/Red"
+            android:textSize="30dp"
+            android:text="Danh Sách Câu Trả Lời"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
     <GridView
+        android:layout_marginTop="10sp"
         android:id="@+id/gvCheckAnswer"
         android:layout_width="match_parent"
         android:layout_height="450dp"

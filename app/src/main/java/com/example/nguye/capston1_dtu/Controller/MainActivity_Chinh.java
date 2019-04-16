@@ -56,8 +56,7 @@ public class MainActivity_Chinh extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.search_edit_frame, page).commit();
 
-        /**
-         * sơn code - tạm ẩn*/
+
         userLogout = findViewById(R.id.btnLogout);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -162,8 +161,8 @@ public class MainActivity_Chinh extends AppCompatActivity
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
         Calendar calendar = Calendar.getInstance();
 
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");

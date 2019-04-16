@@ -32,6 +32,9 @@ public class forgot_password extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar3);
+        setSupportActionBar(toolbar);
+
 
         progressBar = findViewById(R.id.progressBar);
         userEmail = findViewById(R.id.etUserEmail);
