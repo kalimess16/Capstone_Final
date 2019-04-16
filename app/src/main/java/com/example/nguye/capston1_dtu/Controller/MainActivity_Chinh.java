@@ -1,5 +1,6 @@
 package com.example.nguye.capston1_dtu.Controller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,9 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -77,12 +80,31 @@ public class MainActivity_Chinh extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+       /* DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
+        }*/
+       final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+       builder.setMessage("Bạn có muốn thoát ?");
+       builder.setCancelable(true);
+       builder.setNegativeButton("Có", new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialog, int which) {
+               moveTaskToBack(true);
+               android.os.Process.killProcess(android.os.Process.myPid());
+               System.exit(1);
+           }
+       });
+       builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialog, int which) {
+               dialog.cancel();
+           }
+       });
+       AlertDialog alertDialog = builder.create();
+       alertDialog.show();
     }
 
     @Override
@@ -177,4 +199,5 @@ public class MainActivity_Chinh extends AppCompatActivity
         String a = Long.toString(c);
         Log.d("KQ",a);
     }
+
 }

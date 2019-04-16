@@ -31,6 +31,8 @@ public class TestDoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_done);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_test);
+        setSupportActionBar(toolbar);
 
         final Intent intent = getIntent();
         list = (ArrayList<Question>) intent.getExtras().getSerializable("listQuestion"); // đường dẫn đổ data vào như bên web
@@ -43,16 +45,16 @@ public class TestDoneActivity extends AppCompatActivity {
         tvFalse.setText(""+numAnsFalse);
         tvNO.setText(""+numNoAns);
         tvSum.setText(""+totalNum);
-        btAgain.setOnClickListener(new View.OnClickListener() {
+       /* btAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /* if (title.equals(tvResult)){
+              *//* if (title.equals(tvResult)){
                    Intent intent1 = new Intent(TestDoneActivity.this,TesT_List.class);
                    startActivity(intent1);
-               }*/
+               }*//*
                 Toast.makeText(getApplicationContext(),"fixing", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
         btEx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,8 +71,8 @@ public class TestDoneActivity extends AppCompatActivity {
         tvFalse = findViewById(R.id.tvFalse);
         tvNO = findViewById(R.id.tvChuaTL);
         tvSum = findViewById(R.id.tvSUM);
-        tvResult = findViewById(R.id.tvResult);
-        btAgain = findViewById(R.id.btAgain);
+//        tvResult = findViewById(R.id.tvResult);
+//        btAgain = findViewById(R.id.btAgain);
         btEx = findViewById(R.id.btExit);
     }
 
