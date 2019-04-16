@@ -2,75 +2,47 @@ package com.example.nguye.capston1_dtu.Adapter_controller;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nguye.capston1_dtu.Model.City;
-import com.example.nguye.capston1_dtu.Model.MonHoc;
 import com.example.nguye.capston1_dtu.R;
-import com.example.nguye.capston1_dtu.common.setOnItemClick;
 
 import java.util.ArrayList;
 
-public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder>{
-    ArrayList<City> listCity;
-    Context context;
-    private setOnItemClick listener;
-
-    public void setOnClickListener(setOnItemClick listener){
-        this.listener = listener;
+public class CityAdapter extends ArrayAdapter<City> {
+    public CityAdapter(Context context, ArrayList<City> cityList){
+        super(context,0,cityList);
     }
-
 
     @NonNull
     @Override
-    public CityAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.l_mon_hoc,viewGroup,false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        return initView(position, convertView, parent);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CityAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.imageView.setImageResource(listCity.get(i).getView());
-        viewHolder.textView.setText(listCity.get(i).getName());
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        return initView(position, convertView, parent);
     }
-
-    @Override
-    public int getItemCount() {
-        return listCity.size();
-    }
-
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView ;
-        TextView textView;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imageView = itemView.findViewById(R.id.image_view_mon_hoc);
-            textView = itemView.findViewById(R.id.tv_mon_hoc);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(listener!=null){
-                        int position = getAdapterPosition();
-                        if(position!= RecyclerView.NO_POSITION){
-                            listener.onItemClick(position);
-                        }
-                    }
-                }
-            });
+    private View initView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(
+                    R.layout.city_spinner_row, parent, false
+            );
         }
-    }
-
-    public CityAdapter(ArrayList<City> listMonHoc, Context context) {
-        this.listCity = listMonHoc;
-        this.context = context;
+//       TextView imageViewFlag = convertView.findViewById(R.id.image_view_flag);
+        TextView textViewName = convertView.findViewById(R.id.text_view_name);
+        City currentItem = getItem(position);
+        if (currentItem != null) {
+//            imageViewFlag.setText(currentItem.getmCity());
+            textViewName.setText(currentItem.getName());
+        }
+        return convertView;
     }
 }

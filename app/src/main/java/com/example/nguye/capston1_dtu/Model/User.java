@@ -2,17 +2,24 @@ package com.example.nguye.capston1_dtu.Model;
 
 public class User {
     private String username;
-    private String email;
-    private String password, cfpassword;
+    private String email,city;
+    private String password, school;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String email, String password, String cfpassword) {
+    public User(String email,String city, String password, String school) {
         this.email = email;
+        this.city=city;
         this.password = password;
-        this.cfpassword = cfpassword;
+        this.school = school;
+    }
+    public String getCity(){
+        return city;
+    }
+    public void setCity(){
+        this.city=city;
     }
 
     public String getEmail() {
@@ -31,11 +38,11 @@ public class User {
         this.password = password;
     }
 
-    public String getCfpassword() {
-        return cfpassword;
+    public String getSchool() {
+        return school;
     }
 
-    public void setCfpassword(String cfpassword) {
-        this.cfpassword = cfpassword;
+    public void setSchool(String school) {
+        this.school = school;
     }
 }
