@@ -2,6 +2,7 @@ package com.example.nguye.capston1_dtu.Controller;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,6 +15,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,7 +61,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference myRef;
     IsFireBaseLoadDone isFireBaseLoadDone;
-    TextView tvKiemTra, tvTimer, tvXemDiem,textView1;
+    TextView tvKiemTra, tvTimer, tvXemDiem, textView1;
     /**
      * common
      */
@@ -68,7 +70,8 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
     public static final String MY = "title";
 
     /**
-     * MAIN */
+     * MAIN
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +87,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = findViewById(R.id.pager);
         // anh xa
-        aClass = new CounterClass(60*1000,1000);
+        aClass = new CounterClass(60 * 1000, 1000);
 
         tvKiemTra = findViewById(R.id.tvKiemTra);
         tvKiemTra.setOnClickListener(new View.OnClickListener() {
@@ -105,9 +108,9 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
         tvXemDiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ScreenSlidePagerActivity.this,TestDoneActivity.class);
-                intent.putExtra("listQuestion",listQuestion);
-                intent.putExtra("tam",name);
+                Intent intent = new Intent(ScreenSlidePagerActivity.this, TestDoneActivity.class);
+                intent.putExtra("listQuestion", listQuestion);
+                intent.putExtra("tam", name);
                 startActivity(intent);
             }
         });
@@ -170,19 +173,21 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
     }
 
     /**
-     * show ket qua*/
+     * show ket qua
+     */
     private void result() {
-        check=1;
-        if (mPager.getCurrentItem() >=2) mPager.setCurrentItem(mPager.getCurrentItem()-2);
-        else if (mPager.getCurrentItem() <= 2) mPager.setCurrentItem(mPager.getCurrentItem() +2);
+        check = 1;
+        if (mPager.getCurrentItem() >= 2) mPager.setCurrentItem(mPager.getCurrentItem() - 2);
+        else if (mPager.getCurrentItem() <= 2) mPager.setCurrentItem(mPager.getCurrentItem() + 2);
         tvXemDiem.setVisibility(View.VISIBLE);
         tvKiemTra.setVisibility(View.GONE);
     }
 
     /**
-     * check online*/
+     * check online
+     */
     protected boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnected()) {
             return true;
@@ -190,174 +195,32 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
             return false;
         }
     }
+
     /**
      * load data from firebase
      * /*
      */
     public ArrayList<Question> loadFirebase() {
-        if (name.equals("Toan de thi 1")){
-            if (isOnline()){
-                myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 1");
-                final Question[] question = {null};
-                Log.d("dexem", "vao dc roi");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        if (isOnline()) {
+            if (name.equals("Toan de thi 1")) {
+                deToanSo1();
+            } else if (name.equals("Toan de thi 2")) {
+                deToanSo2();
+            } else if (name.equals("Toan de thi 3")) {
+                deToanSo3();
+            } else if (name.equals("Toan de thi 4")) {
+                deToanSo4();
+            } else if (name.equals("Toan de thi 5")) {
 
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        listQuestion = new ArrayList<>();
-                        // check = 0;
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            // NUM = 1;
-                            String title = (String) snapshot.child("title").getValue();
-                            String viewQuestion = (String) snapshot.child("question").getValue();
-                            String ansA = (String) snapshot.child("ansA").getValue();
-                            String ansB = (String) snapshot.child("ansB").getValue();
-                            String ansC = (String) snapshot.child("ansC").getValue();
-                            String ansD = (String) snapshot.child("ansD").getValue();
-                            String dapan = (String) snapshot.child("result").getValue();
-                            question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
-                            listQuestion.add(question[0]);
-                            Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
-                        }
-                        //  count = count+ NUM;
-                        //  NUM = 0;
-                        isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("Fail_test", "ko connect dc vs Firebase");
-                        isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
-                    }
-
-                });
-            }else {
-                Toast.makeText(getApplicationContext(),"Ko co internet",Toast.LENGTH_LONG).show();
+            } else { // cac de con lai
+                Toast.makeText(getApplicationContext(), "Fixing", Toast.LENGTH_LONG).show();
+                aClass.cancel();
+                tvKiemTra.setClickable(false);
             }
+        } else {
+            Toast.makeText(getApplicationContext(), "Ko co internet", Toast.LENGTH_LONG).show();
         }
-        /** load de 2*/
-        else if (name.equals("Toan de thi 2")) {
-            if (isOnline()) {
-                myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 2");
-                final Question[] question = {null};
-                Log.d("dexem", "vao dc roi");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        listQuestion = new ArrayList<>();
-                        // check = 0;
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            // NUM = 1;
-                            String title = (String) snapshot.child("title").getValue();
-                            String viewQuestion = (String) snapshot.child("question").getValue();
-                            String ansA = (String) snapshot.child("ansA").getValue();
-                            String ansB = (String) snapshot.child("ansB").getValue();
-                            String ansC = (String) snapshot.child("ansC").getValue();
-                            String ansD = (String) snapshot.child("ansD").getValue();
-                            String dapan = (String) snapshot.child("result").getValue();
-                            question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
-                            listQuestion.add(question[0]);
-                            Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
-                        }
-                        //  count = count+ NUM;
-                        //  NUM = 0;
-                        isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("Fail_test", "ko connect dc vs Firebase");
-                        isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
-                    }
-
-                });
-            } else {
-                Toast.makeText(getApplicationContext(),"Ko co internet",Toast.LENGTH_LONG).show();
-            }
-        }
-        /** load de so 3*/
-        else if (name.equals("Toan de thi 3")) {
-            if (isOnline()) {
-                myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 3");
-                final Question[] question = {null};
-                Log.d("dexem", "vao dc roi");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        listQuestion = new ArrayList<>();
-                        // check = 0;
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            // NUM = 1;
-                            String title = (String) snapshot.child("title").getValue();
-                            String viewQuestion = (String) snapshot.child("question").getValue();
-                            String ansA = (String) snapshot.child("ansA").getValue();
-                            String ansB = (String) snapshot.child("ansB").getValue();
-                            String ansC = (String) snapshot.child("ansC").getValue();
-                            String ansD = (String) snapshot.child("ansD").getValue();
-                            String dapan = (String) snapshot.child("result").getValue();
-                            question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
-                            listQuestion.add(question[0]);
-                            Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
-                        }
-                        //  count = count+ NUM;
-                        //  NUM = 0;
-                        isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("Fail_test", "ko connect dc vs Firebase");
-                        isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
-                    }
-
-                });
-            } else {
-                Toast.makeText(getApplicationContext(),"Ko co internet",Toast.LENGTH_LONG).show();
-            }
-        }
-        /** load de 4*/
-        else if (name.equals("Toan de thi 4")) {
-            if (isOnline()) {
-                myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 4");
-                final Question[] question = {null};
-                Log.d("dexem", "vao dc roi");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        listQuestion = new ArrayList<>();
-                        // check = 0;
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            // NUM = 1;
-                            String title = (String) snapshot.child("title").getValue();
-                            String viewQuestion = (String) snapshot.child("question").getValue();
-                            String ansA = (String) snapshot.child("ansA").getValue();
-                            String ansB = (String) snapshot.child("ansB").getValue();
-                            String ansC = (String) snapshot.child("ansC").getValue();
-                            String ansD = (String) snapshot.child("ansD").getValue();
-                            String dapan = (String) snapshot.child("result").getValue();
-                            question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
-                            listQuestion.add(question[0]);
-                            Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
-                        }
-                        //  count = count+ NUM;
-                        //  NUM = 0;
-                        isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("Fail_test", "ko connect dc vs Firebase");
-                        isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
-                    }
-
-                });
-            } else {
-                Toast.makeText(getApplicationContext(),"Ko co internet",Toast.LENGTH_LONG).show();
-            }
-        }
         /** load de 5*/
        /* else if (name.equals("Toan de thi 5")) {
             if (isOnline()) {
@@ -399,16 +262,13 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
                 Toast.makeText(getApplicationContext(),"Ko co internet",Toast.LENGTH_LONG).show();
             }
         }*/
-        /** cac de con lai*/
-        else {
-            Toast.makeText(getApplicationContext(), "Fixing", Toast.LENGTH_LONG).show();
-            aClass.cancel();
-            tvKiemTra.setClickable(false);
-        }
+
         return listQuestion;
     }
+
     /**
-     * lay data tu fire base va bo vao slide*/
+     * lay data tu fire base va bo vao slide
+     */
     public ArrayList<Question> getData() {
         return listQuestion;
     }
@@ -421,12 +281,36 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
             super.onBackPressed();
         } else {
             // Otherwise, select the previous step.
-            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+//            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Hãy xem hết quả rồi thoát ra nhá ^_^");
+
+            builder.setCancelable(true);
+            builder.setNegativeButton("Xem", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    aClass.cancel();
+                    // result();
+                    Intent intent = new Intent(ScreenSlidePagerActivity.this, TestDoneActivity.class);
+                    intent.putExtra("listQuestion", listQuestion);
+                    intent.putExtra("tam", name);
+                    startActivity(intent);
+                }
+            });
+            builder.setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
         }
     }
 
     /**
-     * kiểm tra có kết nối dc fire base ko?*/
+     * kiểm tra có kết nối dc fire base ko?
+     */
     @Override
     public void onFirebaseLoadSuccess(ArrayList<Question> arrayList) {
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -450,7 +334,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
         @Override
         public Fragment getItem(int position) {
             ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
-            return fragment.create(position,check);
+            return fragment.create(position, check);
         }
 
         @Override
@@ -525,4 +409,166 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
             result();
         }
     }
+
+    /**
+     * de toan so 1
+     */
+    public void deToanSo1() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 1");
+        final Question[] question = {null};
+        Log.d("dexem", "vao dc roi");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listQuestion = new ArrayList<>();
+                // check = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    // NUM = 1;
+                    String title = (String) snapshot.child("title").getValue();
+                    String viewQuestion = (String) snapshot.child("question").getValue();
+                    String ansA = (String) snapshot.child("ansA").getValue();
+                    String ansB = (String) snapshot.child("ansB").getValue();
+                    String ansC = (String) snapshot.child("ansC").getValue();
+                    String ansD = (String) snapshot.child("ansD").getValue();
+                    String dapan = (String) snapshot.child("result").getValue();
+                    question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
+                    listQuestion.add(question[0]);
+                    Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
+                }
+                //  count = count+ NUM;
+                //  NUM = 0;
+                isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail_test", "ko connect dc vs Firebase");
+                isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
+            }
+
+        });
+    }
+
+    /**
+     * de Toan So 2
+     */
+    public void deToanSo2() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 2");
+        final Question[] question = {null};
+        Log.d("dexem", "vao dc roi");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listQuestion = new ArrayList<>();
+                // check = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    // NUM = 1;
+                    String title = (String) snapshot.child("title").getValue();
+                    String viewQuestion = (String) snapshot.child("question").getValue();
+                    String ansA = (String) snapshot.child("ansA").getValue();
+                    String ansB = (String) snapshot.child("ansB").getValue();
+                    String ansC = (String) snapshot.child("ansC").getValue();
+                    String ansD = (String) snapshot.child("ansD").getValue();
+                    String dapan = (String) snapshot.child("result").getValue();
+                    question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
+                    listQuestion.add(question[0]);
+                    Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
+                }
+                //  count = count+ NUM;
+                //  NUM = 0;
+                isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail_test", "ko connect dc vs Firebase");
+                isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
+            }
+
+        });
+    }
+
+    /**
+     * de toan so 3
+     */
+    public void deToanSo3() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 3");
+        final Question[] question = {null};
+        Log.d("dexem", "vao dc roi");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listQuestion = new ArrayList<>();
+                // check = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    // NUM = 1;
+                    String title = (String) snapshot.child("title").getValue();
+                    String viewQuestion = (String) snapshot.child("question").getValue();
+                    String ansA = (String) snapshot.child("ansA").getValue();
+                    String ansB = (String) snapshot.child("ansB").getValue();
+                    String ansC = (String) snapshot.child("ansC").getValue();
+                    String ansD = (String) snapshot.child("ansD").getValue();
+                    String dapan = (String) snapshot.child("result").getValue();
+                    question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
+                    listQuestion.add(question[0]);
+                    Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
+                }
+                //  count = count+ NUM;
+                //  NUM = 0;
+                isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail_test", "ko connect dc vs Firebase");
+                isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
+            }
+
+        });
+    }
+
+    /**
+     * de toan so 4
+     */
+    public void deToanSo4() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 4");
+        final Question[] question = {null};
+        Log.d("dexem", "vao dc roi");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listQuestion = new ArrayList<>();
+                // check = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    // NUM = 1;
+                    String title = (String) snapshot.child("title").getValue();
+                    String viewQuestion = (String) snapshot.child("question").getValue();
+                    String ansA = (String) snapshot.child("ansA").getValue();
+                    String ansB = (String) snapshot.child("ansB").getValue();
+                    String ansC = (String) snapshot.child("ansC").getValue();
+                    String ansD = (String) snapshot.child("ansD").getValue();
+                    String dapan = (String) snapshot.child("result").getValue();
+                    question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
+                    listQuestion.add(question[0]);
+                    Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
+                }
+                //  count = count+ NUM;
+                //  NUM = 0;
+                isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail_test", "ko connect dc vs Firebase");
+                isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
+            }
+
+        });
+    }
+    /***/
+
 }
