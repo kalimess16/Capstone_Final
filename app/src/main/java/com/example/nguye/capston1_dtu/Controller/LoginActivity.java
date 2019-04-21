@@ -2,9 +2,12 @@ package com.example.nguye.capston1_dtu.Controller;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
@@ -56,20 +59,18 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView textViewDK,btnForgot,btnDangKy;
-    private Button btnDangNhapbutton,btnFB;
+    private TextView textViewDK, btnForgot, btnDangKy;
+    private Button btnDangNhapbutton, btnFB;
     private LoginButton loginButton;
     private SignInButton btnGoogleButton;
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseUser;
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
-    private TextInputLayout textInputEmail,textInputPassword;
+    private TextInputLayout textInputEmail, textInputPassword;
     private GoogleSignInClient mGoogle;
     private CallbackManager callbackManager;
     private FacebookCallback<LoginResult> loginResult;
-
-
 
 
     @Override
@@ -89,23 +90,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initFaceBook();
         printKeyHash(this);
     }
+
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
-    public void checkEmail(){
-        if(firebaseUser==null){
+
+    public void checkEmail() {
+        if (firebaseUser == null) {
             FacebookSdk.sdkInitialize(getApplicationContext());
             textInputEmail.getEditText().setText(null);
 //            callbackManager = CallbackManager.Factory.create();
 //            loginButton.setReadPermissions(Arrays.asList("email"));
-        }
-        else{
+        } else {
             textInputEmail.getEditText().setText(firebaseUser.getEmail());
-            if(mAuth.getCurrentUser().isEmailVerified()){
+            if (mAuth.getCurrentUser().isEmailVerified()) {
                 startActivity(new Intent(LoginActivity.this, MainActivity_Chinh.class));
-            }else{
+            } else {
                 Toast.makeText(LoginActivity.this, "BẠN CHƯA XÁC THỰC EMAIL, VÀO TÀI KHOẢN EMAIL ĐỂ XÁC THỰC LẠI"
                         , Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
@@ -113,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void ConfigureGGsignin(){
+    public void ConfigureGGsignin() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -121,7 +123,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mGoogle = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
     }
-    public void buttonClickFB(View v){
+
+    public void buttonClickFB(View v) {
         callbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = findViewById(R.id.btnLoginFb);
         loginButton.setReadPermissions("email", "public_profile");
@@ -130,32 +133,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onSuccess(LoginResult loginResult) {
                 handleFacebookToken(loginResult.getAccessToken());
             }
+
             @Override
             public void onCancel() {
             }
+
             @Override
             public void onError(FacebookException error) {
             }
         });
     }
-    private void handleFacebookToken(AccessToken accessToken){
+
+    private void handleFacebookToken(AccessToken accessToken) {
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
         mAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     startActivity(new Intent(LoginActivity.this, MainActivity_Chinh.class));
                     Toast.makeText(LoginActivity.this, "ĐĂNG NHẬP VỚI TÀI KHOẢN FB THÀNH CÔNG", Toast.LENGTH_SHORT).show();
                     //firebaseUser = mAuth.getCurrentUser();
 //                    updateUI(firebaseUser);
-                }
-                else{
+                } else {
                     Toast.makeText(LoginActivity.this, "COULD NOT register to FIRE", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
     }
+
     //
 //    private void updateUI(FirebaseUser firebaseUser) {
 //
@@ -193,7 +199,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return null;
         }
     }
-    public void initFaceBook () {
+
+    public void initFaceBook() {
         loginResult = new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -210,11 +217,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String email = object.optString(getString(R.string.email));
                                 String link = object.optString(getString(R.string.link));
                                 URL imageURL = extractFacebookIcon(id);
-                                Log.d("name: ",name);
-                                Log.d("id: ",id);
-                                Log.d("email: ",email);
-                                Log.d("link: ",link);
-                                Log.d("imageURL: ",imageURL.toString());
+                                Log.d("name: ", name);
+                                Log.d("id: ", id);
+                                Log.d("email: ", email);
+                                Log.d("link: ", link);
+                                Log.d("imageURL: ", imageURL.toString());
 
                             }
                         });
@@ -223,18 +230,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 request.setParameters(parameters);
                 request.executeAsync();
             }
+
             @Override
             public void onCancel() {
             }
+
             @Override
             public void onError(FacebookException error) {
             }
         };
     }
+
     public boolean isLoggedInFaceBook() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         return accessToken != null;
     }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
@@ -246,11 +257,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
             }
-        }
-        else{
+        } else {
             callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
+
     public static String printKeyHash(Activity context) {
         PackageInfo packageInfo;
         String key = null;
@@ -277,6 +288,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         return key;
     }
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -295,40 +307,42 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
 
     }
-    public void Anhxa(){
-        btnDangKy=findViewById(R.id.btnDangKilogin);
+
+    public void Anhxa() {
+        btnDangKy = findViewById(R.id.btnDangKilogin);
         btnDangNhapbutton = findViewById(R.id.btnDangnhap);
-        btnForgot=findViewById(R.id.btnforgot);
-        btnGoogleButton= findViewById(R.id.btnGoogle);
+        btnForgot = findViewById(R.id.btnforgot);
+        btnGoogleButton = findViewById(R.id.btnGoogle);
         textInputEmail = findViewById(R.id.textInput_Email);
-        textInputPassword=findViewById(R.id.textInput_Password);
-        loginButton=findViewById(R.id.btnLoginFb);
+        textInputPassword = findViewById(R.id.textInput_Password);
+        loginButton = findViewById(R.id.btnLoginFb);
     }
-    private void DangNhapLogin(){
+
+    private void DangNhapLogin() {
         String email = textInputEmail.getEditText().getText().toString().trim();
         String password = textInputPassword.getEditText().getText().toString().trim();
-        if(TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Enter Pass", Toast.LENGTH_SHORT).show();
             return;
         }
         progressDialog.setMessage("LOGIN");
         progressDialog.show();
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    if(mAuth.getCurrentUser().isEmailVerified()){
+                if (task.isSuccessful()) {
+                    if (mAuth.getCurrentUser().isEmailVerified()) {
                         startActivity(new Intent(LoginActivity.this, MainActivity_Chinh.class));
-                    }else{
+                    } else {
                         Toast.makeText(LoginActivity.this, "BẠN CHƯA XÁC THỰC EMAIL, VÀO TÀI KHOẢN EMAIL ĐỂ XÁC THỰC LẠI"
                                 , Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                     }
-                }else{
+                } else {
                     Toast.makeText(LoginActivity.this, "Email hoặc mật khẩu bạn nhập không đúng, nhập lại"
                             , Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
@@ -336,25 +350,45 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-    private void signInGooGle(){
+
+    /**
+     * check online
+     */
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void signInGooGle() {
         Intent intent = mGoogle.getSignInIntent();
         startActivityForResult(intent, 1);
     }
+
     @Override
     public void onClick(View v) {
         //int i = v.getId();
         Validate validate = new Validate();
         String email = textInputEmail.getEditText().getText().toString().trim();
         String password = textInputPassword.getEditText().getText().toString().trim();
-        if(v==btnDangNhapbutton){
-            if((validate.validateEmail(email,textInputEmail) && validate.validatePassword(password, textInputPassword))){
-                DangNhapLogin();
-                return;
+        if (v == btnDangNhapbutton) {
+            if (isOnline()) {
+                if ((validate.validateEmail(email, textInputEmail) && validate.validatePassword(password, textInputPassword))) {
+                    DangNhapLogin();
+                    return;
+                }
+                if (validate.validatePassword(password, textInputPassword)) {
+                    DangNhapLogin();
+                    return;
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "Vui lòng kết nối mạng!", Toast.LENGTH_LONG).show();
             }
-            if(validate.validatePassword(password,textInputPassword)){
-                DangNhapLogin();
-                return;
-            }
+
 //            String input = "FullName: " + textInputNAME.getEditText().getText().toString();
 //            input += "\n";
 //            input += "Email " + textInputEmail.getEditText().getText().toString();
@@ -363,15 +397,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //            input += "\n";
 //            input +="Confirm Password: " + textInputConfirmPassword.getEditText().getText().toString();
 //            Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
-        }
-        else if(v==btnGoogleButton){
+        } else if (v == btnGoogleButton) {
             signInGooGle();
-        }
-        else if(v==btnDangKy){
+        } else if (v == btnDangKy) {
             startActivity(new Intent(LoginActivity.this, Register.class));
-        }
-        else if(v==btnForgot){
-            startActivity(new Intent(LoginActivity.this,forgot_password.class));
+        } else if (v == btnForgot) {
+            startActivity(new Intent(LoginActivity.this, forgot_password.class));
         }
     }
 

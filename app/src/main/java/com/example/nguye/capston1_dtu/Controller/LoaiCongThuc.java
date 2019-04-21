@@ -55,16 +55,62 @@ public class LoaiCongThuc extends AppCompatActivity implements setOnItemClick {
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
-      }else if (name.equals("")){
+      }else if (name.equals("Công thức Lý")){
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
 
-      }else if (name.equals("")){
+          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
+          recyclerView.setAdapter(loaiCTAdapter);
+          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
+      }else if (name.equals("Công thức Hóa")){
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
 
-      }else if (name.equals("")){
+          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
+          recyclerView.setAdapter(loaiCTAdapter);
+          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
+      }else if (name.equals("Công thức Anh Văn")){
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
 
-      }else if (name.equals("")){
+          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
+          recyclerView.setAdapter(loaiCTAdapter);
+          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
+      }else if (name.equals("Công thức Ngữ Văn")){
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
 
-      }else if (name.equals("")){
+          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
+          recyclerView.setAdapter(loaiCTAdapter);
+          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
+      }else if (name.equals("Công thức Lịch Sử")){
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
 
+          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
+          recyclerView.setAdapter(loaiCTAdapter);
+          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
+      }else if (name.equals("Công thức Địa Lý")){
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
+
+          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
+          recyclerView.setAdapter(loaiCTAdapter);
+          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
+      }else if (name.equals("Công thức Sinh Học")){
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
+
+          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
+          recyclerView.setAdapter(loaiCTAdapter);
+          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
       }else {
           Toast.makeText(getApplicationContext(),"Updating", Toast.LENGTH_LONG).show();
       }

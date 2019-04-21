@@ -48,6 +48,10 @@ public class Show_CT extends Fragment implements setOnItemClick {
         arrMonHoc.add(new MonHoc(R.drawable.logodtu,"Công thức Lý"));
         arrMonHoc.add(new MonHoc(R.drawable.logodtu,"Công thức Hóa"));
         arrMonHoc.add(new MonHoc(R.drawable.logodtu,"Công thức Anh Văn"));
+        arrMonHoc.add(new MonHoc(R.drawable.logodtu,"Công thức Lịch Sử"));
+        arrMonHoc.add(new MonHoc(R.drawable.logodtu,"Công thức Địa Lý"));
+        arrMonHoc.add(new MonHoc(R.drawable.logodtu,"Công thức Sinh Học"));
+        arrMonHoc.add(new MonHoc(R.drawable.logodtu,"Công thức Ngữ Văn"));
 
         monHocAdapter = new MonHocAdapter(arrMonHoc,getActivity());
         recyclerView.setAdapter(monHocAdapter);

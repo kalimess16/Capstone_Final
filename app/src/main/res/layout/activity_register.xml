@@ -1,147 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@drawable/nen"
-    android:layout_height="match_parent"
-    tools:context=".Controller.Register">
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:textColor="@color/colorFacebook"
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textSize="30sp"
-        android:text="ĐĂNG KÍ TÀI KHOẢN"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingTop="56dp"
+        android:paddingRight="24dp">
 
-    <Button
-        android:id="@+id/btnDangki"
-        android:background="@color/colorFacebook"
-        android:textColor="#FFEBEE"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="ĐĂNG KÍ"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myListView" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ĐĂNG KÍ TÀI KHOẢN"
+            android:textColor="@color/colorFacebook"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInput_NAME"
-        android:layout_width="311dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="MissingConstraints">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput_NAME"
+            android:layout_width="311dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="MissingConstraints">
 
-        <!--<android.support.design.widget.TextInputEditText-->
+            <!--<android.support.design.widget.TextInputEditText-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:drawableLeft="@mipmap/ic_fullname"-->
             <!--android:onClick="onClick"-->
             <!--android:hint="HỌ VÀ TÊN"-->
             <!--android:inputType="textPersonName" />-->
-    </android.support.design.widget.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInput_Email"
-        android:layout_width="311dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInput_NAME">
-
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput_Email"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
-            android:drawableLeft="@mipmap/ic_email"
-            android:hint="ĐỊA CHỈ EMAIL"
-            android:inputType="textEmailAddress" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInput_NAME">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInput_Password"
-        android:layout_width="311dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:passwordToggleEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInput_Email">
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_email"
+                android:hint="ĐỊA CHỈ EMAIL"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput_Password"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
-            android:drawableStart="@mipmap/ic_password"
-            android:drawableLeft="@mipmap/ic_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInput_Email"
+            app:passwordToggleEnabled="true">
 
-            android:hint="MẬT KHẨU"
-            android:inputType="textPassword" />
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@mipmap/ic_password"
+                android:drawableLeft="@mipmap/ic_password"
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputConfirm_Password"
-        android:layout_width="311dp"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInput_Password">
+                android:hint="MẬT KHẨU"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputConfirm_Password"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
-            android:drawableStart="@mipmap/ic_password"
-            android:drawableLeft="@mipmap/ic_password"
-            android:hint="NHẬP LẠI MẬT KHẨU"
-            android:inputType="textPassword" />
-    </android.support.design.widget.TextInputLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInput_Password"
+            app:passwordToggleEnabled="true">
 
-    <TextView
-        android:id="@+id/btnDangNhap"
-        android:textAlignment="center"
-        android:textColor="@color/colorFacebook"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="ĐĂNG NHẬP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDangki" />
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@mipmap/ic_password"
+                android:drawableLeft="@mipmap/ic_password"
+                android:hint="NHẬP LẠI MẬT KHẨU"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/spinnerCity"
-        android:layout_width="311dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputConfirm_Password">
+        <Spinner
+            android:id="@+id/spinnerCity"
+            android:layout_width="311dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputConfirm_Password">
 
-    </Spinner>
+        </Spinner>
 
-    <Spinner
-        android:layout_marginTop="10dp"
-        android:id="@+id/myListView"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCity"
-        android:layout_width="311dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <Spinner
+            android:id="@+id/myListView"
+            android:layout_width="311dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
+        <Button
+            android:id="@+id/btnDangki"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorFacebook"
+            android:text="ĐĂNG KÍ"
+            android:textColor="#FFEBEE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myListView" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/btnDangNhap"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="ĐĂNG NHẬP"
+            android:textAlignment="center"
+            android:textColor="@color/colorFacebook"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDangki" />
+
+    </LinearLayout>
+</ScrollView>
