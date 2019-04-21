@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,7 +62,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference myRef;
     IsFireBaseLoadDone isFireBaseLoadDone;
-    TextView tvKiemTra, tvTimer, tvXemDiem, textView1;
+    TextView tvKiemTra, tvTimer, tvXemDiem;
     /**
      * common
      */
@@ -118,6 +119,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
         isFireBaseLoadDone = this;
         loadBaiTest();
         mPager.setPageTransformer(true, new DepthPageTransformer());
+
 
     }
 
@@ -218,6 +220,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
                 tvKiemTra.setClickable(false);
             }
         } else {
+            aClass.cancel();
             Toast.makeText(getApplicationContext(), "Ko co internet", Toast.LENGTH_LONG).show();
         }
 

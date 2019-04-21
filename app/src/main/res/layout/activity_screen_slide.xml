@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/id_1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#e9f14b25"
@@ -95,6 +96,7 @@
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent" >
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>

@@ -55,6 +55,16 @@ public class LoaiCongThuc extends AppCompatActivity implements setOnItemClick {
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
+      }else if (name.equals("")){
+
+      }else if (name.equals("")){
+
+      }else if (name.equals("")){
+
+      }else if (name.equals("")){
+
+      }else if (name.equals("")){
+
       }else {
           Toast.makeText(getApplicationContext(),"Updating", Toast.LENGTH_LONG).show();
       }
