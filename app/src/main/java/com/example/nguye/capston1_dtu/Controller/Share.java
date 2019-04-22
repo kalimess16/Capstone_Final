@@ -1,9 +1,12 @@
 package com.example.nguye.capston1_dtu.Controller;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -98,28 +101,35 @@ public class Share extends AppCompatActivity {
         btnShareImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShareLinkContent content = new ShareLinkContent.Builder()
-                        .setContentUrl(Uri.parse("http://luyenthi.duytan.edu.vn/"))
-                        .setQuote("TRANG LUYỆN THI ĐẠI HỌC DUY TÂN")
-                        .setShareHashtag(new ShareHashtag.Builder()
-                                .setHashtag("#LUYENTHIDUYTAN")
-                                .build())
-                        .build();
-                getShareDialog().show(content);
+               if (isOnline()){
+                   ShareLinkContent content = new ShareLinkContent.Builder()
+                           .setContentUrl(Uri.parse("http://luyenthi.duytan.edu.vn/"))
+                           .setQuote("TRANG LUYỆN THI ĐẠI HỌC DUY TÂN")
+                           .setShareHashtag(new ShareHashtag.Builder()
+                                   .setHashtag("#LUYENTHIDUYTAN")
+                                   .build())
+                           .build();
+                   getShareDialog().show(content);
+               }else {
+                   Toast.makeText(getApplicationContext(),"Vui lòng kết nối mạng",Toast.LENGTH_LONG).show();
+               }
             }
         });
         btnShareLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                ShareLinkContent content = new ShareLinkContent.Builder()
-                        .setContentUrl(Uri.parse("https://duytan.edu.vn/tuyen-sinh/Page/Home.aspx"))
-                        .setQuote("ĐẠI HỌC DUY TÂN")
-                        .setShareHashtag(new ShareHashtag.Builder()
-                                .setHashtag("#TUYENSINHDUYTAN")
-                                .build())
-                        .build();
-                getShareDialog().show(content);
+                if (isOnline()){
+                    ShareLinkContent content = new ShareLinkContent.Builder()
+                            .setContentUrl(Uri.parse("https://duytan.edu.vn/tuyen-sinh/Page/Home.aspx"))
+                            .setQuote("ĐẠI HỌC DUY TÂN")
+                            .setShareHashtag(new ShareHashtag.Builder()
+                                    .setHashtag("#TUYENSINHDUYTAN")
+                                    .build())
+                            .build();
+                    getShareDialog().show(content);
+                }else {
+                    Toast.makeText(getApplicationContext(),"Vui lòng kết nối mạng",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -128,6 +138,18 @@ public class Share extends AppCompatActivity {
         btnShareImage= findViewById(R.id.btn_share_image);
         btnShareLink = (Button) findViewById(R.id.btn_share_link);
 //        imgShare = (ImageView) findViewById(R.id.img_share);
+    }
+    /**
+     * check online
+     */
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

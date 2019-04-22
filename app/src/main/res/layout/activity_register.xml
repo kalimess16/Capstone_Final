@@ -70,6 +70,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInput_Password"
             android:layout_width="311dp"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +89,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputConfirm_Password"
+            android:layout_marginTop="5dp"
             android:layout_width="311dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

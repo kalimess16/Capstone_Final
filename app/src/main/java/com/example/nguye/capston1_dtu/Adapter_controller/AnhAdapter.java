@@ -37,7 +37,6 @@ public class AnhAdapter extends RecyclerView.Adapter<AnhAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Picasso.get().load(listAnh.get(i).getImage()).into(viewHolder.imageView);
-        viewHolder.title.setText(listAnh.get(i).getTitle());
     }
 
     @Override
@@ -46,11 +45,9 @@ public class AnhAdapter extends RecyclerView.Adapter<AnhAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title;
         ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.mTextView);
             imageView = itemView.findViewById(R.id.mImageV);
         }
     }

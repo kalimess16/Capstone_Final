@@ -19,7 +19,7 @@
 
     <ImageView
         android:visibility="invisible"
-        android:background="@drawable/nodisconnect"
+        android:background="@drawable/disconext"
         android:id="@+id/mDisconnectV"
         android:layout_width="match_parent"
         android:layout_height="454dp"

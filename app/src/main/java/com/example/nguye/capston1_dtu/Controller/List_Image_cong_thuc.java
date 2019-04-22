@@ -69,47 +69,125 @@ public class List_Image_cong_thuc extends AppCompatActivity {
         inView();
     }
 
+    /**
+     * show cong thuc
+     */
     private void inView() {
-        if (name.equals("Đạo Hàm")){
-            if(isOnline()){
-                myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("Cong Thuc");
-                final Anh[] anh = {null};
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                            String title = (String) snapshot.child("title").getValue();
-                            String image = (String) snapshot.child("image").getValue();
-                            anh[0] = new Anh(title,image);
-                            listArray.add(anh[0]);
-                        }
-                        adapter = new AnhAdapter(List_Image_cong_thuc.this,listArray);
-                        mRecyclerView.setAdapter(adapter);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("Fail","ko connect dc vs Firebase");
-                        Toast.makeText(getApplicationContext(),"Fail connection",Toast.LENGTH_LONG).show();
-                    }
-                });
-            }else {
-                mImageView.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(),"Vui long Ket noi InterNet",Toast.LENGTH_LONG).show();
+        if (isOnline()) {
+            if (name.equals("Đạo Hàm")) {
+                congThucToan1();
+            } else if (name.equals("Tích Phân")) {
+                congThucToan2();
+            }else if (name.equals("Lượng giác")){
+                congThucToan3();
             }
-
-        }else {
-            Toast.makeText(getApplicationContext(),"Cang Cap nhat!!",Toast.LENGTH_LONG).show();
+            else {
+                Toast.makeText(getApplicationContext(), "Cang Cap nhat!!", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            mImageView.setVisibility(View.VISIBLE);
+            Toast.makeText(getApplicationContext(), "Vui long Ket noi InterNet", Toast.LENGTH_LONG).show();
         }
     }
+
+    /**
+     * check online
+     */
     protected boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnected()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    /**
+     * cac cong thuc toan hoc
+     */
+    public void congThucToan1() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("Cong Thuc").child("Đạo Hàm");
+        final Anh[] anh = {null};
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String image = (String) snapshot.child("image").getValue();
+                    anh[0] = new Anh(image);
+                    listArray.add(anh[0]);
+                }
+                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
+                mRecyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail", "ko connect dc vs Firebase");
+                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void congThucToan2() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("Cong Thuc").child("Tích Phân");
+        final Anh[] anh = {null};
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String image = (String) snapshot.child("image").getValue();
+                    anh[0] = new Anh(image);
+                    listArray.add(anh[0]);
+                }
+                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
+                mRecyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail", "ko connect dc vs Firebase");
+                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void congThucToan3() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("Cong Thuc").child("Lượng Giác");
+        final Anh[] anh = {null};
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String image = (String) snapshot.child("image").getValue();
+                    anh[0] = new Anh(image);
+                    listArray.add(anh[0]);
+                }
+                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
+                mRecyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail", "ko connect dc vs Firebase");
+                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    /**
+     * Cac cong thuc ly hoc
+     */
+    public void congThucVatLy1() {
+
+    }
+
+    public void congThucVatLy2() {
+
+    }
+
+    public void congThucVatLy3() {
+
     }
 
 }

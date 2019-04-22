@@ -1,6 +1,9 @@
 package com.example.nguye.capston1_dtu.Controller;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +27,11 @@ public class Chatmail extends AppCompatActivity {
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendMail();
+                if (isOnline()){
+                    sendMail();
+                }else {
+                    Toast.makeText(getApplicationContext(),"Mạng không ổn định, Vui lòng kết nối lại!!!",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -49,5 +56,18 @@ public class Chatmail extends AppCompatActivity {
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent, "Choose an email client"));
     }
+    /**
+     * check online
+     */
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }

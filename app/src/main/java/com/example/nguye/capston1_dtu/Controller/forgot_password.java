@@ -1,7 +1,10 @@
 package com.example.nguye.capston1_dtu.Controller;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -74,15 +77,33 @@ public class forgot_password extends AppCompatActivity implements View.OnClickLi
         Validate validate = new Validate();
         String email = userEmail.getEditText().getText().toString().trim();
         if(v==userPass){
-            if(validate.validateEmail(email,userEmail)){
-                QuenMk();
-                return;
-            }
+           if (isOnline()){
+               if(validate.validateEmail(email,userEmail)){
+                   QuenMk();
+                   return;
+               }
+           }else {
+               Toast.makeText(getApplicationContext(), "Vui lòng kết nối mạng", Toast.LENGTH_SHORT).show();
+
+           }
         }
         if(v==loginforgot){
             startActivity(new Intent(forgot_password.this, LoginActivity.class));
         }
 
     }
+    /**
+     * check online
+     */
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 

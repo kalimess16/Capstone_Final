@@ -224,47 +224,6 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
             Toast.makeText(getApplicationContext(), "Ko co internet", Toast.LENGTH_LONG).show();
         }
 
-        /** load de 5*/
-       /* else if (name.equals("Toan de thi 5")) {
-            if (isOnline()) {
-                myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("test").child("đề số 5");
-                final Question[] question = {null};
-                Log.d("dexem", "vao dc roi");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        listQuestion = new ArrayList<>();
-                        // check = 0;
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            // NUM = 1;
-                            String title = (String) snapshot.child("title").getValue();
-                            String viewQuestion = (String) snapshot.child("question").getValue();
-                            String ansA = (String) snapshot.child("ansA").getValue();
-                            String ansB = (String) snapshot.child("ansB").getValue();
-                            String ansC = (String) snapshot.child("ansC").getValue();
-                            String ansD = (String) snapshot.child("ansD").getValue();
-                            String dapan = (String) snapshot.child("result").getValue();
-                            question[0] = new Question(title, viewQuestion, ansA, ansB, ansC, ansD, dapan, "");
-                            listQuestion.add(question[0]);
-                            Log.d("de_xem", "test:" + ansA + "," + ansB + "," + ansC + "," + ansD + "!!!");
-                        }
-                        //  count = count+ NUM;
-                        //  NUM = 0;
-                        isFireBaseLoadDone.onFirebaseLoadSuccess(listQuestion);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("Fail_test", "ko connect dc vs Firebase");
-                        isFireBaseLoadDone.onFirebaseLoadFailed(databaseError.getMessage());
-                    }
-
-                });
-            } else {
-                Toast.makeText(getApplicationContext(),"Ko co internet",Toast.LENGTH_LONG).show();
-            }
-        }*/
 
         return listQuestion;
     }
@@ -278,37 +237,32 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
 
     @Override
     public void onBackPressed() {
-        if (mPager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
-        } else {
-            // Otherwise, select the previous step.
+        // Otherwise, select the previous step.
 //            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
-            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Hãy xem hết quả rồi thoát ra nhá ^_^");
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Hãy xem hết quả rồi thoát ra nhá ^_^");
 
-            builder.setCancelable(true);
-            builder.setNegativeButton("Xem", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    aClass.cancel();
-                    // result();
-                    Intent intent = new Intent(ScreenSlidePagerActivity.this, TestDoneActivity.class);
-                    intent.putExtra("listQuestion", listQuestion);
-                    intent.putExtra("tam", name);
-                    startActivity(intent);
-                }
-            });
-            builder.setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
-        }
+        builder.setCancelable(true);
+        builder.setNegativeButton("Xem", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                aClass.cancel();
+                // result();
+                Intent intent = new Intent(ScreenSlidePagerActivity.this, TestDoneActivity.class);
+                intent.putExtra("listQuestion", listQuestion);
+                intent.putExtra("tam", name);
+                startActivity(intent);
+            }
+        });
+        builder.setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
     }
 
     /**
