@@ -80,6 +80,10 @@ public class List_Image_cong_thuc extends AppCompatActivity {
                 congThucToan2();
             }else if (name.equals("Lượng giác")){
                 congThucToan3();
+            }else if(name.equals("1")){
+                congThucHoaHoc1();
+            }else if(name.equals("2")){
+                congthucAnhvan1();
             }
             else {
                 Toast.makeText(getApplicationContext(), "Cang Cap nhat!!", Toast.LENGTH_LONG).show();
@@ -189,7 +193,50 @@ public class List_Image_cong_thuc extends AppCompatActivity {
     public void congThucVatLy3() {
 
     }
+    public void congthucAnhvan1(){
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Thi");
+        final Anh[] anh = {null};
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String image = (String) snapshot.child("image").getValue();
+                    anh[0] = new Anh(image);
+                    listArray.add(anh[0]);
+                }
+                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
+                mRecyclerView.setAdapter(adapter);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail", "ko connect dc vs Firebase");
+                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    public void congThucHoaHoc1(){
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 10");
+        final Anh[] anh = {null};
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String image = (String) snapshot.child("image").getValue();
+                    anh[0] = new Anh(image);
+                    listArray.add(anh[0]);
+                }
+                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
+                mRecyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail", "ko connect dc vs Firebase");
+                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }
 
 

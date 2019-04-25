@@ -62,19 +62,7 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:gravity="center">
-       <com.facebook.login.widget.LoginButton
-           android:layout_marginBottom="10sp"
-           android:id="@+id/btnLoginFb"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:layout_marginTop="8dp"
-           android:background="#3b5998"
-           android:onClick="buttonClickFB"
-           android:text="Login FaceBook"
-           android:textColor="#fff"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/btnGoogle" />
+
 
    </LinearLayout>
 </LinearLayout>

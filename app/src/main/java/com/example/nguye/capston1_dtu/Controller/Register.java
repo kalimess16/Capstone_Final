@@ -312,21 +312,33 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String cfpassword = textInputConfirmPassword.getEditText().getText().toString().trim();
         if (isOnline()) {
             if (v == btnDangKi) {
-                if (validate.validateEmail(email, textInputEmail)
-                        && validate.validatePassword(password, textInputPassword)
-                        && validate.validateConfirmPassword(password, cfpassword, textInputConfirmPassword)) {
+                if (validate.validatePassword(password, textInputPassword)
+                        && validate.validateEmail(email, textInputEmail) && validate.validateConfirmPassword(password, cfpassword, textInputConfirmPassword)) {
                     Dangki();
                     return;
                 }
-                if (validate.validatePassword(password, textInputPassword)) {
+                if ( validate.validateEmail(email, textInputEmail)
+                        && validate.validateConfirmPassword(password, cfpassword, textInputConfirmPassword)
+                        && validate.validatePassword(password, textInputPassword)
+                        ) {
                     Dangki();
+                    return;
+                }
+                if (validate.validateConfirmPassword(password, cfpassword, textInputConfirmPassword) && validate.validatePassword(password, textInputPassword)
+                        && validate.validateEmail(email, textInputEmail)) {
+                    Dangki();
+                    return;
+                }
+             /*   if (validate.validatePassword(password, textInputPassword)) {
+//                    Dangki();
                     return;
 
                 }
                 if (validate.validateConfirmPassword(password, cfpassword, textInputConfirmPassword)) {
-                    Dangki();
+//                    Dangki();
                     return;
-                }
+                }*/
+
             }
         } else {
             Toast.makeText(getApplicationContext(), "Vui lòng kết nối Internet", Toast.LENGTH_LONG).show();
