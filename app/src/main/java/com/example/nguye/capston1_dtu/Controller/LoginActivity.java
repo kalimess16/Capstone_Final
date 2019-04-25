@@ -126,7 +126,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public void buttonClickFB(View v) {
         callbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = findViewById(R.id.btnLoginFb);
         loginButton.setReadPermissions("email", "public_profile");
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -315,7 +314,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnGoogleButton = findViewById(R.id.btnGoogle);
         textInputEmail = findViewById(R.id.textInput_Email);
         textInputPassword = findViewById(R.id.textInput_Password);
-        loginButton = findViewById(R.id.btnLoginFb);
+
     }
 
     private void DangNhapLogin() {
