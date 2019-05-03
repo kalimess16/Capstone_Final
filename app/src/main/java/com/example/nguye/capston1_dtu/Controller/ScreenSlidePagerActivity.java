@@ -204,17 +204,15 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
      */
     public ArrayList<Question> loadFirebase() {
         if (isOnline()) {
-            if (name.equals("Toan de thi 1")) {
+            if (name.equals("Bài kiểm tra số 1")) {
                 deToanSo1();
-            } else if (name.equals("Toan de thi 2")) {
+            } else if (name.equals("Bài kiểm tra số 2")) {
                 deToanSo2();
-            } else if (name.equals("Toan de thi 3")) {
+            } else if (name.equals("Bài kiểm tra số 3")) {
                 deToanSo3();
-            } else if (name.equals("Toan de thi 4")) {
+            } else if (name.equals("Bài kiểm tra số 4")) {
                 deToanSo4();
-            } else if (name.equals("Toan de thi 5")) {
-
-            } else { // cac de con lai
+            }else { // cac de con lai
                 Toast.makeText(getApplicationContext(), "Fixing", Toast.LENGTH_LONG).show();
                 aClass.cancel();
                 tvKiemTra.setClickable(false);

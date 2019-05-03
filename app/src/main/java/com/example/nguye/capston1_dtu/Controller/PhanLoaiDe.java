@@ -32,8 +32,8 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
         Toolbar toolbar = findViewById(R.id.toolbar_loaiDe);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
-        name = intent.getStringExtra(NAME);
+            Intent intent = getIntent();
+            name = intent.getStringExtra(NAME);
 
         recyclerView = findViewById(R.id.recycler_view_De_Thi);
         recyclerView.setHasFixedSize(true);
@@ -72,14 +72,10 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
         } else if (name.equals("Môn Lý")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý số 1"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý số 2"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý số 3"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý số 4"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý số 5"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý số 6"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý số 7"));
-
+            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý năm 2017"));
+            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý năm 2018"));
+            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý năm 2019_v1"));
+            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý năm 2019_v2"));
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);

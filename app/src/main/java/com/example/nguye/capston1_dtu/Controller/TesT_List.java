@@ -25,7 +25,7 @@ public class TesT_List extends Fragment {
     GridView gridView;
     ArrayList<Exam> listExam = new ArrayList<>();
     ExamAdapter examAdapter;
-    public static final String NAME = "title";
+    public static final String NAME = "list";
 
     @Nullable
     @Override
@@ -37,19 +37,19 @@ public class TesT_List extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         gridView = getActivity().findViewById(R.id.gvSubject);
-        listExam.add(new Exam("Toan de thi 1"));
-        listExam.add(new Exam("Toan de thi 2"));
-        listExam.add(new Exam("Toan de thi 3"));
-        listExam.add(new Exam("Toan de thi 4"));
-        listExam.add(new Exam("Toan de thi 5"));
-        listExam.add(new Exam("Toan de thi 6"));
+        listExam.add(new Exam("Bài kiểm tra môn Toán"));
+        listExam.add(new Exam("Bài kiểm tra môn Vật Lý"));
+        listExam.add(new Exam("Bài kiểm tra môn Hóa Học"));
+        listExam.add(new Exam("Bài kiểm tra môn Tiếng Anh"));
+        listExam.add(new Exam("Bài kiểm tra môn Sinh Học"));
+
 
         examAdapter = new ExamAdapter(getActivity(), listExam);
         gridView.setAdapter(examAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), ScreenSlidePagerActivity.class);
+                Intent intent = new Intent(getActivity(), DanhSachBaiTest.class);
                 Exam exam = listExam.get(position);
                 intent.putExtra(NAME,exam.getName());
                 startActivity(intent);

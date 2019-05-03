@@ -56,25 +56,25 @@ public class LoaiCongThuc extends AppCompatActivity implements setOnItemClick {
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
       }else if (name.equals("Công thức Lý")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Lý lớp 10"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Lý lớp 11"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Lý lớp 12"));
 
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
       }else if (name.equals("Công thức Hóa")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Hóa lớp 10"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Hóa lớp 11"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Hóa lớp 12"));
 
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
       }else if (name.equals("Công thức Anh Văn")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Câu tường thuật"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Câu điều kiện"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Thì"));
 
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
