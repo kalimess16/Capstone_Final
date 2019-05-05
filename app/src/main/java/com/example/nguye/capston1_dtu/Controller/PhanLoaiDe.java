@@ -48,11 +48,11 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 1"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 2"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 3"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 4"));
+            /*loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 4"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 5"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 6"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 7"));
-
+*/
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
@@ -61,12 +61,12 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 1"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 2"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 3"));
+            /*loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 3"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 4"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 5"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 6"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 7"));
-
+*/
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
@@ -84,10 +84,8 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 1"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 2"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 3"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 4"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 5"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 6"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 7"));
+            /*loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 4"));
+            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 5"));*/
 
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
@@ -99,8 +97,8 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 3"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 4"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 5"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 6"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 7"));
+            /*loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 6"));
+            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 7"));*/
 
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);

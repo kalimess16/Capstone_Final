@@ -64,9 +64,9 @@ public class LoaiCongThuc extends AppCompatActivity implements setOnItemClick {
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
       }else if (name.equals("Công thức Hóa")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Hóa lớp 10"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Hóa lớp 11"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Hóa lớp 12"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Chất điện li"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức kim loại"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức POLYME"));
 
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);

@@ -43,7 +43,7 @@ public class DanhSachBaiTest extends AppCompatActivity implements setOnItemClick
     }
 
     private void inView() {
-        if (name.equals("Bài kiểm tra môn Toán")){  ///////////// TOAN //////////////
+        if (name.equals("Kiểm tra Toán")){  ///////////// TOAN //////////////
             loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra số 1"));
             loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra số 2"));
             loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra số 3"));
@@ -54,14 +54,22 @@ public class DanhSachBaiTest extends AppCompatActivity implements setOnItemClick
             recyclerView.setAdapter(loaiDeAdapter);
             loaiDeAdapter.setSetOnItemClickListener(DanhSachBaiTest.this);
 
-        }else if (name.equals("Bài kiểm tra môn Vật Lý")){
-            Toast.makeText(getApplicationContext(), "co ma moi hien 1", Toast.LENGTH_LONG).show();
-        }else if (name.equals("Bài kiểm tra môn Hóa Học")){
-            Toast.makeText(getApplicationContext(), "co ma moi hien 2", Toast.LENGTH_LONG).show();
-        }else if (name.equals("Bài kiểm tra môn Tiếng Anh")){
-            Toast.makeText(getApplicationContext(), "co ma moi hien 3", Toast.LENGTH_LONG).show();
-        }else if (name.equals("Bài kiểm tra môn Sinh Học")){
-            Toast.makeText(getApplicationContext(), "co ma moi hien 4", Toast.LENGTH_LONG).show();
+        }else if (name.equals("Kiểm tra Vật Lý")){
+            loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra Ly số 1"));
+           /* loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra Ly số 2"));
+            loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra Ly số 3"));
+            loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra Ly số 4"));*/
+
+
+            loaiDeAdapter = new LoaiCTAdapter(loaiDE, getApplicationContext());
+            recyclerView.setAdapter(loaiDeAdapter);
+            loaiDeAdapter.setSetOnItemClickListener(DanhSachBaiTest.this);
+        }else if (name.equals("Kiểm tra Hóa Học")){
+            Toast.makeText(getApplicationContext(), "updating", Toast.LENGTH_LONG).show();
+        }else if (name.equals("Kiểm tra Tiếng Anh")){
+            Toast.makeText(getApplicationContext(), "updating", Toast.LENGTH_LONG).show();
+        }else if (name.equals("Kiểm tra Sinh Học")){
+            Toast.makeText(getApplicationContext(), "updating", Toast.LENGTH_LONG).show();
         }else {
             Toast.makeText(getApplicationContext(), "co ma moi hien", Toast.LENGTH_LONG).show();
         }

@@ -37,11 +37,11 @@ public class TesT_List extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         gridView = getActivity().findViewById(R.id.gvSubject);
-        listExam.add(new Exam("Bài kiểm tra môn Toán"));
-        listExam.add(new Exam("Bài kiểm tra môn Vật Lý"));
-        listExam.add(new Exam("Bài kiểm tra môn Hóa Học"));
-        listExam.add(new Exam("Bài kiểm tra môn Tiếng Anh"));
-        listExam.add(new Exam("Bài kiểm tra môn Sinh Học"));
+        listExam.add(new Exam("Kiểm tra Toán"));
+        listExam.add(new Exam("Kiểm tra Vật Lý"));
+        listExam.add(new Exam("Kiểm tra Hóa Học"));
+        listExam.add(new Exam("Kiểm tra Tiếng Anh"));
+        listExam.add(new Exam("Kiểm tra Sinh Học"));
 
 
         examAdapter = new ExamAdapter(getActivity(), listExam);

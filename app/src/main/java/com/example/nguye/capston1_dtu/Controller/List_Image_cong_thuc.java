@@ -92,11 +92,11 @@ public class List_Image_cong_thuc extends AppCompatActivity {
                 congThucVatLy2();
             } else if (name.equals("Tổng hợp công thức Lý lớp 12")) {
                 congThucVatLy3();
-            } else if (name.equals("Tổng hợp công thức Hóa lớp 10")) { ///////// Môn Hóa
+            } else if (name.equals("Chất điện li")) { ///////// Môn Hóa
                 congThucHoaHoc1();
-            } else if (name.equals("Tổng hợp công thức Hóa lớp 11")) {
+            } else if (name.equals("Tổng hợp công thức kim loại")) {
                 congThucHoaHoc2();
-            } else if (name.equals("Tổng hợp công thức Hóa lớp 12")) {
+            } else if (name.equals("Tổng hợp công thức POLYME")) {
                 congThucHoaHoc3();
             } else {
                 Toast.makeText(getApplicationContext(), "Cang Cap nhat!!", Toast.LENGTH_LONG).show();
@@ -340,7 +340,7 @@ public class List_Image_cong_thuc extends AppCompatActivity {
      * Các Công Thức Hóa Học
      */
     public void congThucHoaHoc1() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 10");
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("Chat dien li");
         final Anh[] anh = {null};
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -363,7 +363,7 @@ public class List_Image_cong_thuc extends AppCompatActivity {
     }
 
     public void congThucHoaHoc2() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 11");
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("Kim Loai");
         final Anh[] anh = {null};
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -386,7 +386,7 @@ public class List_Image_cong_thuc extends AppCompatActivity {
     }
 
     public void congThucHoaHoc3() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 12");
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("POLYME");
         final Anh[] anh = {null};
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
