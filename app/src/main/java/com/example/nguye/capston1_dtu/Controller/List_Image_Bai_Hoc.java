@@ -251,4 +251,16 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
         mRefence = mDatabase.getReference("Mon Hoc").child("Ngữ Văn").child("Bài Học").child("Đề số 2");
         loadBaiHoc();
     }
+    public void deMauHoaHoc1() {
+        mRefence = mDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Bai Hoc").child("bài số 1");
+        loadBaiHoc();
+    }
+    public void deMauHoaHoc2() {
+        mRefence = mDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Bai Hoc").child("bài số 2");
+        loadBaiHoc();
+    }
+    public void deMauHoaHoc3() {
+        mRefence = mDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Bai Hoc").child("bài số 3");
+        loadBaiHoc();
+    }
 }
