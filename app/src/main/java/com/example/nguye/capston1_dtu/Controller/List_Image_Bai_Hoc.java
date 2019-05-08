@@ -92,15 +92,19 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
                 deMauToanSo3();
             } else if (name.equals("Đề mẫu Anh Văn số 1")) {///// anh văn
                 deMauAnhVan1();
-            }else if (name.equals("Đề mẫu Anh Văn số 2")) {
+            } else if (name.equals("Đề mẫu Anh Văn số 2")) {///// anh văn
                 deMauAnhVan2();
-            } else if (name.equals("Đề mẫu Anh Văn số 3")) {
+            } else if (name.equals("Đề mẫu Anh Văn số 3")) {///// anh văn
                 deMauAnhVan3();
-            } else if (name.equals("Đề mẫu Anh Văn số 4")) {
+            } else if (name.equals("Đề mẫu Anh Văn số 4")) {///// anh văn
                 deMauAnhVan4();
-            } else if (name.equals("Đề mẫu Anh Văn số 5")) {
+            } else if (name.equals("Đề mẫu Anh Văn số 5")) {///// anh văn
                 deMauAnhVan5();
-            }  else if (name.equals("Đề mẫu Lý năm 2017")) { /// Lý
+            } else if (name.equals("Đề mẫu Văn số 1")) {///// Ngữ văn
+                deMauNguVan1();
+            } else if (name.equals("Đề mẫu Văn số 2")) {///// Ngữ văn
+                deMauNguVan2();
+            } else if (name.equals("Đề mẫu Lý năm 2017")) { /// Lý
                 deMauLySo1();
             } else if (name.equals("Đề mẫu Lý năm 2018")) {
                 deMauLySo2();
@@ -127,7 +131,7 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
             }
         } else {
             mImageView_BH.setVisibility(View.VISIBLE);
-            Toast.makeText(getApplicationContext(), "Vui long Ket noi InterNet", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Vui lòng kết nối mạng", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -152,77 +156,44 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
         mTextView = findViewById(R.id.demo_bai_hoc);
         mRev = findViewById(R.id.m_ReV_bai_hoc);
     }
+    public void loadBaiHoc(){
+        final Hoc[] hocs = {null};
+        mRefence.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String image = (String) snapshot.child("image").getValue();
+                    hocs[0] = new Hoc(image);
+                    listHoc.add(hocs[0]);
+                }
+                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
+                mRev.setAdapter(mBaiHocAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Fail_BH", "Không kết nối được với firebase");
+                Toast.makeText(getApplicationContext(), "Kết nối bị lỗi", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
     /**
      * cac bai mau mon toan
      */
     public void deMauToanSo1() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Toan").child("Bai Hoc").child("De so 1");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
 
     public void deMauToanSo2() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Toan").child("Bai Hoc").child("đề số 2");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
 
     public void deMauToanSo3() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Toan").child("Bai Hoc").child("đề số 3");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
 
 
@@ -231,94 +202,22 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
      */
     public void deMauLySo1() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Ly").child("De mau").child("De 2017");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
 
     public void deMauLySo2() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Ly").child("De mau").child("De 2018");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
 
     public void deMauLySo3() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Ly").child("De mau").child("De 2019_1");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
 
     public void deMauLySo4() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Ly").child("De mau").child("De 2019_2");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
 
     /**
@@ -326,238 +225,30 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
      */
     public void deMauAnhVan1() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Anh Van").child("Bai Hoc").child("De so 1");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
-
     public void deMauAnhVan2() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Anh Van").child("Bai Hoc").child("De so 2");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
-
     public void deMauAnhVan3() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Anh Van").child("Bai Hoc").child("De so 3");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
-
     public void deMauAnhVan4() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Anh Van").child("Bai Hoc").child("De so 4");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
-
     public void deMauAnhVan5() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Anh Van").child("Bai Hoc").child("De so 5");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
-
-    /**
-     * Các đề mẫu môn Hóa Học
-     */
-    public void deMauHoaHoc1() {
-        mRefence = mDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Bai Hoc").child("bài số 1");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    public void deMauHoaHoc2() {
-        mRefence = mDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Bai Hoc").child("bài số 2");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    public void deMauHoaHoc3() {
-        mRefence = mDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Bai Hoc").child("bài số 3");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    /**
-     * Các đề mẫu môn Ngữ Văn
-     */
-
     public void deMauNguVan1() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Ngữ Văn").child("Bài Học").child("Đề số 1");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
-
     public void deMauNguVan2() {
         mRefence = mDatabase.getReference("Mon Hoc").child("Ngữ Văn").child("Bài Học").child("Đề số 2");
-        final Hoc[] hocs = {null};
-        mRefence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    hocs[0] = new Hoc(image);
-                    listHoc.add(hocs[0]);
-                }
-                mBaiHocAdapter = new BaiHocAdapter(List_Image_Bai_Hoc.this, listHoc);
-                mRev.setAdapter(mBaiHocAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail_BH", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadBaiHoc();
     }
 }

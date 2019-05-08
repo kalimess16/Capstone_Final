@@ -100,6 +100,8 @@ public class List_Image_cong_thuc extends AppCompatActivity {
                 congThucAnhVan2();
             } else if (name.equals("Thì")) {
                 congThucAnhVan3();
+            } else if (name.equals("Ngữ Pháp")) {
+                congThucAnhVan4();
             } else if (name.equals("Tổng hợp công thức Lý lớp 10")) { ////////// ly
                 congThucVatLy1();
             } else if (name.equals("Tổng hợp công thức Lý lớp 11")) {
@@ -110,23 +112,23 @@ public class List_Image_cong_thuc extends AppCompatActivity {
                 congThucHoaHoc1();
             } else if (name.equals("Tổng hợp công thức kim loại")) {
                 congThucHoaHoc2();
-            } else if (name.equals("Tổng hợp công thức POLYME")) {
+            } else if (name.equals("Tổng hợp công thức Hóa lớp 12")) {//// Môn Sinh
                 congThucHoaHoc3();
-            }else if (name.equals("Cơ chế tổng hợp ARN")){ //////////////// SINH HOC /////////////
+            } else if (name.equals("Cơ chế tổng hợp ARN")) {
                 congThucSinhHoc1();
-            }else if (name.equals("Cơ chế tổng hợp Protein")){
+            } else if (name.equals("Cơ chế tổng hợp protetin")) {
                 congThucSinhHoc2();
-            }else if (name.equals("Cấu trúc ADN")){
+            } else if (name.equals("Cấu trúc ADN")) {
                 congThucSinhHoc3();
-            }else if (name.equals("Di truyền và dị biến")){
+            } else if (name.equals("Di truyền và biến dị")) {
                 congThucSinhHoc4();
-            }
-            else {
-                Toast.makeText(getApplicationContext(), "Cang Cap nhat!!", Toast.LENGTH_LONG).show();
+
+            } else {
+                Toast.makeText(getApplicationContext(), "Dữ liệu chưa được cập nhật", Toast.LENGTH_LONG).show();
             }
         } else {
             mImageView.setVisibility(View.VISIBLE);
-            Toast.makeText(getApplicationContext(), "Vui long Ket noi InterNet", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Vui lòng kết nối mạng", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -146,8 +148,7 @@ public class List_Image_cong_thuc extends AppCompatActivity {
     /**
      * cac cong thuc toan hoc
      */
-    public void congThucToan1() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("Cong Thuc").child("Đạo Hàm");
+    public void loadCongThuc(){
         final Anh[] anh = {null};
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -163,56 +164,24 @@ public class List_Image_cong_thuc extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
+                Log.d("Fail", "Không kết nối được với firebase");
+                Toast.makeText(getApplicationContext(), "Kết nối bị lỗi", Toast.LENGTH_LONG).show();
             }
         });
+    }
+    public void congThucToan1() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("Cong Thuc").child("Đạo Hàm");
+        loadCongThuc();
     }
 
     public void congThucToan2() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("Cong Thuc").child("Tích Phân");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadCongThuc();
     }
 
     public void congThucToan3() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Toan").child("Cong Thuc").child("Lượng Giác");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadCongThuc();
     }
 
     /**
@@ -220,71 +189,17 @@ public class List_Image_cong_thuc extends AppCompatActivity {
      */
     public void congThucVatLy1() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Ly").child("Cong Thuc").child("Lop 10");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadCongThuc();
     }
 
     public void congThucVatLy2() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Ly").child("Cong Thuc").child("Lop 11");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadCongThuc();
     }
 
     public void congThucVatLy3() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Ly").child("Cong Thuc").child("Lop 12");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadCongThuc();
     }
 
     /**
@@ -292,242 +207,60 @@ public class List_Image_cong_thuc extends AppCompatActivity {
      */
     public void congthucAnhvan1() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Câu tường thuật");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadCongThuc();
     }
 
     public void congThucAnhVan2() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Câu điều kiện");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadCongThuc();
     }
 
     public void congThucAnhVan3() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Thi");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        loadCongThuc();
+    }
+    public void congThucAnhVan4(){
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Ngữ pháp");
+        loadCongThuc();
     }
 
     /**
      * Các Công Thức Hóa Học
      */
     public void congThucHoaHoc1() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("Chat dien li");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 10");
+        loadCongThuc();
     }
 
     public void congThucHoaHoc2() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("Kim Loai");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 11");
+        loadCongThuc();
     }
 
     public void congThucHoaHoc3() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("POLYME");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 12");
+        loadCongThuc();
+    }
+    /**
+     * Các công thức Sinh Học
+     */
+    public void congThucSinhHoc1() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Sinh Học").child("Công Thức").child("Cơ chế tổng hợp ARN");
+        loadCongThuc();
+    }
+    public void congThucSinhHoc2() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Sinh Học").child("Công Thức").child("Cơ chế tổng hợp protetin");
+        loadCongThuc();
+    }
+    public void congThucSinhHoc3() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Sinh Học").child("Công Thức").child("Cấu trúc ADN");
+        loadCongThuc();
+    }
+    public void congThucSinhHoc4() {
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Sinh Học").child("Công Thức").child("Di truyền và biến dị");
+        loadCongThuc();
     }
 
-    /** Các công thức Sinh học*/
-
-    public void congThucSinhHoc1(){
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Sinh Học").child("Công Thức").child("" +
-                "Cơ chế tổng hợp ARN");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    public void congThucSinhHoc2(){
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Sinh Học").child("Công Thức").child("" +
-                "Cơ chế tổng hợp protein");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    public void congThucSinhHoc3(){
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Sinh Học").child("Công Thức").child("" +
-                "Cấu trúc ADN");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    public void congThucSinhHoc4(){
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Sinh Học").child("Công Thức").child("" +
-                "Di truyền và biến dị");
-        final Anh[] anh = {null};
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String image = (String) snapshot.child("image").getValue();
-                    anh[0] = new Anh(image);
-                    listArray.add(anh[0]);
-                }
-                adapter = new AnhAdapter(List_Image_cong_thuc.this, listArray);
-                mRecyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Fail", "ko connect dc vs Firebase");
-                Toast.makeText(getApplicationContext(), "Fail connection", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
 }
 
 

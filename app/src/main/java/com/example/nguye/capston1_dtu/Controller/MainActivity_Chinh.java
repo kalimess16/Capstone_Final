@@ -149,6 +149,8 @@ public class MainActivity_Chinh extends AppCompatActivity
             startActivity(new Intent(this, Chatmail.class));
         } else if (id == R.id.nav_share) {
             startActivity(new Intent(this, Share.class));
+        } else if (id == R.id.nav_Video) {
+            fragment = new List_Video();
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             LoginManager.getInstance().logOut();
