@@ -96,7 +96,26 @@
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="550dp" >
     </android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:background="@drawable/nen"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/back"
+            android:text="Quay lại"
+            android:padding="10sp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/next"
+            android:text="Câu tiếp theo"
+            android:padding="10sp"
+            android:layout_marginLeft="10sp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </LinearLayout>

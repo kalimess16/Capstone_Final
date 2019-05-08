@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,6 +46,13 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
         setContentView(R.layout.list_anh_bai_hoc);
         // Anh Xa
         AnhXA();
+
+        Toolbar toolbar = findViewById(R.id.toolbar_AnhBaiHoc);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         // get ten
         Intent intent = getIntent();
         name = intent.getStringExtra(MY_NAME);
@@ -56,6 +64,12 @@ public class List_Image_Bai_Hoc extends AppCompatActivity {
         // send Query to Firebase
         mDatabase = FirebaseDatabase.getInstance();
         inView(); // load bai hoc len activity
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     /**

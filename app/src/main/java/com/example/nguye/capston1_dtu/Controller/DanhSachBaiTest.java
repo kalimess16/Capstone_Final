@@ -31,6 +31,9 @@ public class DanhSachBaiTest extends AppCompatActivity implements setOnItemClick
         Toolbar toolbar = findViewById(R.id.toolbarDe);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         Intent intent = getIntent();
         name = intent.getStringExtra(NAME);
 
@@ -40,6 +43,12 @@ public class DanhSachBaiTest extends AppCompatActivity implements setOnItemClick
         recyclerView.setLayoutManager(manager);
         inView();
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void inView() {

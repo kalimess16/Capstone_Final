@@ -63,6 +63,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
     DatabaseReference myRef;
     IsFireBaseLoadDone isFireBaseLoadDone;
     TextView tvKiemTra, tvTimer, tvXemDiem;
+    Button btBack, btNext;
     /**
      * common
      */
@@ -120,6 +121,29 @@ public class ScreenSlidePagerActivity extends FragmentActivity implements IsFire
         loadBaiTest();
         mPager.setPageTransformer(true, new DepthPageTransformer());
 
+        btBack = findViewById(R.id.back);
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mPager.getCurrentItem() == 0) {
+                    Toast.makeText(getApplicationContext(), "Hãy làm tiếp câu tiếp theo", Toast.LENGTH_LONG).show();
+                } else {
+                    mPager.setCurrentItem(mPager.getCurrentItem() - 1, true);
+                }
+            }
+        });
+
+        btNext = findViewById(R.id.next);
+        btNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mPager.getCurrentItem() == 9) {
+                    Toast.makeText(getApplicationContext(), "Hãy kiểm tra và kết thúc bài làm", Toast.LENGTH_LONG).show();
+                } else {
+                    mPager.setCurrentItem(mPager.getCurrentItem() + 1, true);
+                }
+            }
+        });
 
     }
 

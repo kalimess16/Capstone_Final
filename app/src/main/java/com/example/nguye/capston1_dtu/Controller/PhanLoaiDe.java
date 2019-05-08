@@ -32,14 +32,23 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
         Toolbar toolbar = findViewById(R.id.toolbar_loaiDe);
         setSupportActionBar(toolbar);
 
-            Intent intent = getIntent();
-            name = intent.getStringExtra(NAME);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        Intent intent = getIntent();
+        name = intent.getStringExtra(NAME);
 
         recyclerView = findViewById(R.id.recycler_view_De_Thi);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
         inView();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void inView() {
@@ -103,7 +112,7 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
-        } else if (name.equals("Môn Lịch sử")) {
+        } /*else if (name.equals("Môn Lịch sử")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lịch sử số 1"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lịch sử số 2"));
@@ -116,7 +125,7 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
-        } else if (name.equals("Môn Sinh học")) {
+        }*//* else if (name.equals("Môn Sinh học")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Sinh học số 1"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Sinh học số 2"));
@@ -129,7 +138,7 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
-        } else if (name.equals("Môn Địa lý")) {
+        }*//* else if (name.equals("Môn Địa lý")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Địa lý số 1"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Địa lý số 2"));
@@ -142,7 +151,7 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
-        } else {
+        } */else {
             Toast.makeText(getApplicationContext(), "co ma moi hien", Toast.LENGTH_LONG).show();
         }
     }

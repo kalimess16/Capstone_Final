@@ -50,9 +50,9 @@ public class BaiHoc extends Fragment implements setOnItemClick {
         listMon.add(new MonHoc(R.drawable.logodtu,"Môn Lý"));
         listMon.add(new MonHoc(R.drawable.logodtu,"Môn Hóa"));
         listMon.add(new MonHoc(R.drawable.logodtu,"Môn Anh Văn"));
-        listMon.add(new MonHoc(R.drawable.logodtu,"Môn Lịch sử"));
+       /* listMon.add(new MonHoc(R.drawable.logodtu,"Môn Lịch sử"));*/
         listMon.add(new MonHoc(R.drawable.logodtu,"Môn Sinh học"));
-        listMon.add(new MonHoc(R.drawable.logodtu,"Môn Địa lý"));
+        /*listMon.add(new MonHoc(R.drawable.logodtu,"Môn Địa lý"));*/
 
         monHocAdapter = new MonHocAdapter(listMon,getActivity());
         mRev.setAdapter(monHocAdapter);

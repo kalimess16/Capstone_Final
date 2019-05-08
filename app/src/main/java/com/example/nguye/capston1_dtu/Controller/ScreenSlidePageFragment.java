@@ -7,10 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nguye.capston1_dtu.Model.Question;
 import com.example.nguye.capston1_dtu.R;
@@ -40,7 +42,7 @@ public class ScreenSlidePageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_screen_slide_page, container, false);
         title = rootView.findViewById(R.id.tvNum);
@@ -50,6 +52,7 @@ public class ScreenSlidePageFragment extends Fragment {
         ansC = rootView.findViewById(R.id.radC);
         ansD = rootView.findViewById(R.id.radD);
         radioGroup = rootView.findViewById(R.id.radGroup);
+
         return rootView;
     }
 
@@ -100,6 +103,7 @@ public class ScreenSlidePageFragment extends Fragment {
                 list.get(mPageNumber).setTamAns(getAnswer(checkedId));
             }
         });
+
     }
 
     /**
