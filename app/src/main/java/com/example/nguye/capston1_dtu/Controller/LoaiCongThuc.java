@@ -84,40 +84,16 @@ public class LoaiCongThuc extends AppCompatActivity implements setOnItemClick {
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Câu tường thuật"));
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Câu điều kiện"));
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Thì"));
-
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Ngữ Pháp"));
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
-      }/*else if (name.equals("Công thức Ngữ Văn")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
 
-          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
-          recyclerView.setAdapter(loaiCTAdapter);
-          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
-      }else if (name.equals("Công thức Lịch Sử")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
-
-          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
-          recyclerView.setAdapter(loaiCTAdapter);
-          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
-      }else if (name.equals("Công thức Địa Lý")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"1"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"2"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"3"));
-
-          loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
-          recyclerView.setAdapter(loaiCTAdapter);
-          loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
-      }*/else if (name.equals("Công thức Sinh Học")){
+      } else if (name.equals("Công thức Sinh Học")){
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Cơ chế tổng hợp ARN"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Cơ chế tổng hợp Protein"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Cơ chế tổng hợp protetin"));
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Cấu trúc ADN"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Di truyền và dị biến"));
-
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Di truyền và biến dị"));
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
