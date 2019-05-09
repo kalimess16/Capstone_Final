@@ -215,12 +215,10 @@ public class List_Image_cong_thuc extends AppCompatActivity {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Câu tường thuật");
         loadCongThuc();
     }
-
     public void congThucAnhVan2() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Câu điều kiện");
         loadCongThuc();
     }
-
     public void congThucAnhVan3() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Thi");
         loadCongThuc();
@@ -249,12 +247,10 @@ public class List_Image_cong_thuc extends AppCompatActivity {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 10");
         loadCongThuc();
     }
-
     public void congThucHoaHoc2() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 11");
         loadCongThuc();
     }
-
     public void congThucHoaHoc3() {
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 12");
         loadCongThuc();

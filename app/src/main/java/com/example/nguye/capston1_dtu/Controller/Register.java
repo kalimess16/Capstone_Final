@@ -44,7 +44,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private ArrayList<City> mCityList;
     private CityAdapter mAdapter;
     ArrayAdapter<City> cityArrayAdapter;
-    String[] categories = {"Tất cả", "Đà Nẵng", "Quảng Nam"};
+    String[] categories = {"Tên Tỉnh, Thành phố", "Đà Nẵng", "Quảng Nam"};
 
     private TextView textViewDK, btnDangNhap;
 
