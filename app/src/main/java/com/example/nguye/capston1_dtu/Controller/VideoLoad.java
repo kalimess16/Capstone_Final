@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,13 @@ public class VideoLoad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+
+        Toolbar toolbar = findViewById(R.id.toolbar_Video);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         Intent intent = getIntent();
         name = intent.getStringExtra(MY_NAME);
         mTextView = findViewById(R.id.de);
@@ -52,12 +60,11 @@ public class VideoLoad extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-
-
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
+
     private void inView(){
         if(isOnline()){
            if(name.equals("Now You See Me")){
