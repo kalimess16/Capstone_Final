@@ -1,7 +1,11 @@
 package com.example.nguye.capston1_dtu.Controller;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.text.UnicodeSetSpanner;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -152,10 +156,14 @@ public class MainActivity_Chinh extends AppCompatActivity
         } else if (id == R.id.nav_Video) {
             fragment = new List_Video();
         } else if (id == R.id.nav_logout) {
-            FirebaseAuth.getInstance().signOut();
-            LoginManager.getInstance().logOut();
-            startActivity(new Intent(this, LoginActivity.class));
-
+           if (isOnline()){
+               FirebaseAuth.getInstance().signOut();
+               LoginManager.getInstance().logOut();
+               startActivity(new Intent(this, LoginActivity.class));
+           }
+           else {
+               Toast.makeText(getApplicationContext(),"Kết nối bị lỗi", Toast.LENGTH_LONG).show();
+           }
         }
 
         if (fragment != null) {
@@ -170,36 +178,37 @@ public class MainActivity_Chinh extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    Date a,b;
+    /**
+     * check online
+     */
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Calendar calendar = Calendar.getInstance();
-        System.out.print("Text ne ===>"+ calendar.getTime());
-
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-        a = calendar.getTime();
-        String dateFormat = format.format(a);
-        Log.d("ket qua1",dateFormat);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Calendar calendar = Calendar.getInstance();
-
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-        b = calendar.getTime();
-        String dateEnd = format.format(b);
-        Log.d("ket qua2",dateEnd);
-
-
-
-        // tinh time
-        long c = a.getTime() - b.getTime();
-        String a = Long.toString(c);
-        Log.d("KQ",a);
+        if (!isOnline()){
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Vui lòng kết nối internet");
+            builder.setCancelable(true);
+            builder.setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    moveTaskToBack(true);
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                    System.exit(1);
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
     }
 
 }

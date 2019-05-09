@@ -94,7 +94,7 @@ public class LoaiCongThuc extends AppCompatActivity implements setOnItemClick {
 
       } else if (name.equals("Công thức Sinh Học")){
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Cơ chế tổng hợp ARN"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Cơ chế tổng hợp protetin"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Cơ chế tổng hợp protein"));
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Cấu trúc ADN"));
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Di truyền và biến dị"));
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());

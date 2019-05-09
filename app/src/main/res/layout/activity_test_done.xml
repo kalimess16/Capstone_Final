@@ -83,7 +83,7 @@
         android:padding="10dp">
 
         <TextView
-            android:textColor="#E9C408"
+            android:textColor="#81058A"
             android:id="@+id/tv"
             android:layout_width="33dp"
             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:textColor="#E9C408"
+            android:textColor="#81058A"
             android:textSize="18dp"
             android:id="@+id/tvChuaTL"
             android:layout_width="wrap_content"

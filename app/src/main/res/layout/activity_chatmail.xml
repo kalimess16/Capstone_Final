@@ -1,76 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/nen"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+
     >
 
-    <TextView
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Người nhận:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:theme="@style/AppTheme.AppBarOverlay"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:layout_marginTop="5dp"
-        android:id="@+id/edit_text_to"
-        android:text="Capstone1team@gmail.com"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Chủ đề:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <EditText
-        android:layout_marginTop="5sp"
-        android:id="@+id/edit_text_subject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailSubject" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nội dung:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <EditText
-        android:id="@+id/edit_text_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start|top"
-        android:lines="10" />
-
-    <android.support.v7.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        app:cardBackgroundColor="#9504A1F7"
-        app:cardCornerRadius="25dp">
-
-        <RelativeLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_Chat"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <TextView
-                android:id="@+id/button_send"
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:padding="16sp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Người nhận:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/edit_text_to"
+            android:text="Capstone1team@gmail.com"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chủ đề:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <EditText
+            android:layout_marginTop="5sp"
+            android:id="@+id/edit_text_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailSubject" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nội dung:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <EditText
+            android:id="@+id/edit_text_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:lines="10" />
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="#9504A1F7"
+            app:cardCornerRadius="25dp">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:gravity="center"
-                android:text="GỬI"
-                android:textColor="@color/colorWhite"
-                android:textSize="20dp" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/button_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center"
+                    android:text="GỬI"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
 </LinearLayout>

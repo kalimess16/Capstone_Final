@@ -111,7 +111,7 @@
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/next"
-            android:text="Câu tiếp theo"
+            android:text="Tiếp theo"
             android:padding="10sp"
             android:layout_marginLeft="10sp"
             android:layout_width="150dp"

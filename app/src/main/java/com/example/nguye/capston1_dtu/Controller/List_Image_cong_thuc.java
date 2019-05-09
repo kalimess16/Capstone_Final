@@ -114,15 +114,15 @@ public class List_Image_cong_thuc extends AppCompatActivity {
                 congThucVatLy2();
             } else if (name.equals("Tổng hợp công thức Lý lớp 12")) {
                 congThucVatLy3();
-            } else if (name.equals("Chất điện li")) { ///////// Môn Hóa
+            } else if (name.equals("Chất điện li")) { ///////// Môn Hóa////////////
                 congThucHoaHoc1();
             } else if (name.equals("Tổng hợp công thức kim loại")) {
                 congThucHoaHoc2();
-            } else if (name.equals("Tổng hợp công thức Hóa lớp 12")) {//// Môn Sinh
+            } else if (name.equals("Tổng hợp công thức POLYME")) {
                 congThucHoaHoc3();
-            } else if (name.equals("Cơ chế tổng hợp ARN")) {
+            } else if (name.equals("Cơ chế tổng hợp ARN")) {//// Môn Sinh//////////
                 congThucSinhHoc1();
-            } else if (name.equals("Cơ chế tổng hợp protetin")) {
+            } else if (name.equals("Cơ chế tổng hợp protein")) {
                 congThucSinhHoc2();
             } else if (name.equals("Cấu trúc ADN")) {
                 congThucSinhHoc3();
@@ -244,15 +244,15 @@ public class List_Image_cong_thuc extends AppCompatActivity {
      * Các Công Thức Hóa Học
      */
     public void congThucHoaHoc1() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 10");
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("Chat dien li");
         loadCongThuc();
     }
     public void congThucHoaHoc2() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 11");
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("Kim Loai");
         loadCongThuc();
     }
     public void congThucHoaHoc3() {
-        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong Thuc").child("lop 12");
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Hoa Hoc").child("Cong thuc").child("POLYME");
         loadCongThuc();
     }
     /**

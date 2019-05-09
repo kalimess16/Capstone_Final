@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class VideoLoad extends AppCompatActivity {
-    public static final String MY_NAME = "capstone";
+    public static final String MY_NAME = "Video";
     private String name;
     TextView mTextView;
     VideoView Video;
@@ -60,7 +60,9 @@ public class VideoLoad extends AppCompatActivity {
     }
     private void inView(){
         if(isOnline()){
-           nowYouSeeMe();
+           if(name.equals("Now You See Me")){
+               nowYouSeeMe();
+           }
         }
         else {
             Toast.makeText(getApplicationContext(), "Vui lòng kết nối mạng", Toast.LENGTH_LONG).show();

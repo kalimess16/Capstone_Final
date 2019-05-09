@@ -44,7 +44,7 @@ public class TestDoneActivity extends AppCompatActivity {
         tvTrue.setText(""+numAnsTrue);
         tvFalse.setText(""+numAnsFalse);
         tvNO.setText(""+numNoAns);
-        tvSum.setText(""+totalNum);
+        tvSum.setText(""+totalNum+"/100");
        /* btAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
