@@ -85,6 +85,9 @@ public class LoaiCongThuc extends AppCompatActivity implements setOnItemClick {
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Câu điều kiện"));
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Thì"));
           arrayList.add(new LoaiCT(R.drawable.logodtu,"Ngữ Pháp"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Các từ định lượng"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Nguyên tắc trọng âm"));
+          arrayList.add(new LoaiCT(R.drawable.logodtu,"Loại từ"));
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);

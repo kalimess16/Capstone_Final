@@ -15,7 +15,7 @@
         <TextView
             android:textStyle="bold"
             android:textSize="30dp"
-            android:text="Chia Sẽ"
+            android:text="Chia Sẻ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -48,7 +48,7 @@
         android:id="@+id/btn_share_image"
         android:background="#3b5998"
         android:textColor="@android:color/white"
-        android:text="CHIA SẼ TRANG LUYỆN THI ĐẠI HỌC DUY TÂN"/>
+        android:text="CHIA SẺ TRANG LUYỆN THI ĐẠI HỌC DUY TÂN"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
         android:id="@+id/btn_share_link"
         android:background="#3b5998"
         android:textColor="@android:color/white"
-        android:text="Chia sẽ trang thông tin tuyển sinh"/>
+        android:text="Chia sẻ trang thông tin tuyển sinh"/>
    <LinearLayout
        android:layout_marginTop="5sp"
        android:layout_width="match_parent"

@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">OUE_PHA</string>
-    <string name="QuenMatKhau">Forgot password</string>
-    <string name="test">Test</string>
-    <string name="formula">Formula</string>
-    <string name="lesson">Lesson</string>
-    <string name="result">Result</string>
+    <string name="QuenMatKhau">Quên mật khẩu</string>
+    <string name="test">Bài kiểm tra</string>
+    <string name="formula">Công thức</string>
+    <string name="lesson">Bài học</string>
+    <string name="result">Kết quả</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Team Capstone</string>
