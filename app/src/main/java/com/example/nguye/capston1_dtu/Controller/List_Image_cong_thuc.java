@@ -102,6 +102,12 @@ public class List_Image_cong_thuc extends AppCompatActivity {
                 congThucAnhVan3();
             } else if (name.equals("Ngữ Pháp")) {
                 congThucAnhVan4();
+            } else if (name.equals("Loại từ")) {
+                congThucAnhVan5();
+            } else if (name.equals("Nguyên tắc trọng âm")) {
+                congThucAnhVan6();
+            } else if (name.equals("Các từ định lượng")) {
+                congThucAnhVan7();
             } else if (name.equals("Tổng hợp công thức Lý lớp 10")) { ////////// ly
                 congThucVatLy1();
             } else if (name.equals("Tổng hợp công thức Lý lớp 11")) {
@@ -221,6 +227,18 @@ public class List_Image_cong_thuc extends AppCompatActivity {
     }
     public void congThucAnhVan4(){
         myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Ngữ pháp");
+        loadCongThuc();
+    }
+    public void congThucAnhVan5(){
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Loại từ");
+        loadCongThuc();
+    }
+    public void congThucAnhVan6(){
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Nguyên tắc trọng âm");
+        loadCongThuc();
+    }
+    public void congThucAnhVan7(){
+        myRef = mFirebaseDatabase.getReference("Mon Hoc").child("Anh Van").child("Cong Thuc").child("Các từ định lượng");
         loadCongThuc();
     }
 
