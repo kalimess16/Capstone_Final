@@ -45,7 +45,8 @@ public class List_Video extends Fragment implements setOnItemClick {
     }
 
     private void inView() {
-        arrVideo.add(new Video(R.drawable.logodtu,"Now You See Me"));
+        arrVideo.add(new Video(R.drawable.logodtu,"Luyện nghe tiếng anh"));
+        arrVideo.add(new Video(R.drawable.logodtu,"Nguyên hàm lượng giác"));
 
         viDeoAdapter = new VideoAdapter(arrVideo,getActivity());
         recyclerView.setAdapter(viDeoAdapter);
