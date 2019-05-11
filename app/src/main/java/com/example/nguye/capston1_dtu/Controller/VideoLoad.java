@@ -67,9 +67,13 @@ public class VideoLoad extends AppCompatActivity {
 
     private void inView(){
         if(isOnline()){
-           if(name.equals("Now You See Me")){
-               nowYouSeeMe();
+           if(name.equals("Luyện nghe tiếng anh")){
+               luyenNgheTiengAnh();
            }
+           else if(name.equals("Nguyên hàm lượng giác")){
+               nguyenHamLuongGiac();
+           }
+
         }
         else {
             Toast.makeText(getApplicationContext(), "Vui lòng kết nối mạng", Toast.LENGTH_LONG).show();
@@ -93,6 +97,18 @@ public class VideoLoad extends AppCompatActivity {
         mRef = firebaseDatabase.getReference("Video").child("Now You");
         loadVideo();
 
+    }
+    public void bacPhan(){
+        mRef = firebaseDatabase.getReference("Video").child("Bạc Phận");
+        loadVideo();
+    }
+    public void luyenNgheTiengAnh(){
+        mRef = firebaseDatabase.getReference("Video").child("Luyện nghe tiếng anh");
+        loadVideo();
+    }
+    public void nguyenHamLuongGiac(){
+        mRef = firebaseDatabase.getReference("Video").child("Nguyên hàm lượng giác");
+        loadVideo();
     }
     public void loadVideo(){
         mRef.addValueEventListener(new ValueEventListener() {

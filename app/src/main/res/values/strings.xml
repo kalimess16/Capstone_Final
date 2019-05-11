@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">DTU EDUCATION</string>
     <string name="QuenMatKhau">Quên mật khẩu</string>
     <string name="test">Bài kiểm tra</string>
     <string name="formula">Công thức</string>
@@ -25,4 +24,5 @@
     <string name="fields">fields</string>
     <string name="fields_name">id,name,link,email</string>
     <string name="data">data</string>
+    <string name="app_name">DTU\nEducation</string>
 </resources>
