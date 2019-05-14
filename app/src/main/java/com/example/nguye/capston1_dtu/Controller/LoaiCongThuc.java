@@ -56,47 +56,47 @@ public class LoaiCongThuc extends AppCompatActivity implements setOnItemClick {
     }
 
     private void inView() {
-      if (name.equals("Công thức Toán")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Đạo Hàm"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tích Phân"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Lượng giác"));
+      if (name.equals("Môn Toán")){
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Đạo Hàm"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Tích Phân"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Lượng giác"));
 
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
-      }else if (name.equals("Công thức Lý")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Lý lớp 10"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Lý lớp 11"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức Lý lớp 12"));
+      }else if (name.equals("Môn Lý")){
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Tổng hợp công thức Lý lớp 10"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Tổng hợp công thức Lý lớp 11"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Tổng hợp công thức Lý lớp 12"));
 
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
-      }else if (name.equals("Công thức Hóa")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Chất điện li"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức kim loại"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Tổng hợp công thức POLYME"));
+      }else if (name.equals("Môn Hóa")){
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Chất điện li"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Tổng hợp công thức kim loại"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Tổng hợp công thức POLYME"));
 
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
-      }else if (name.equals("Công thức Anh Văn")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Câu tường thuật"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Câu điều kiện"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Thì"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Ngữ Pháp"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Các từ định lượng"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Nguyên tắc trọng âm"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Loại từ"));
+      }else if (name.equals("Môn Anh Văn")){
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Câu tường thuật"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Câu điều kiện"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Thì"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Ngữ Pháp"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Các từ định lượng"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Nguyên tắc trọng âm"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Loại từ"));
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);
 
-      } else if (name.equals("Công thức Sinh Học")){
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Cơ chế tổng hợp ARN"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Cơ chế tổng hợp protein"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Cấu trúc ADN"));
-          arrayList.add(new LoaiCT(R.drawable.logodtu,"Di truyền và biến dị"));
+      } else if (name.equals("Môn Sinh Học")){
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Cơ chế tổng hợp ARN"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Cơ chế tổng hợp protein"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Cấu trúc ADN"));
+          arrayList.add(new LoaiCT(R.drawable.cuckoo,"Di truyền và biến dị"));
           loaiCTAdapter = new LoaiCTAdapter(arrayList,getApplicationContext());
           recyclerView.setAdapter(loaiCTAdapter);
           loaiCTAdapter.setSetOnItemClickListener(LoaiCongThuc.this);

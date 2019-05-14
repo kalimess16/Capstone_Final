@@ -54,9 +54,9 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
     private void inView() {
         if (name.equals("Môn Toán")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 1"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 2"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 3"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Toán số 1"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Toán số 2"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Toán số 3"));
             /*loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 4"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 5"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Toán số 6"));
@@ -68,8 +68,8 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
 
         } else if (name.equals("Môn Văn")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 1"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 2"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Văn số 1"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Văn số 2"));
             /*loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 3"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 4"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Văn số 5"));
@@ -81,18 +81,18 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
         } else if (name.equals("Môn Lý")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý năm 2017"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý năm 2018"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý năm 2019_v1"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Lý năm 2019_v2"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Lý năm 2017"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Lý năm 2018"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Lý năm 2019_v1"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Lý năm 2019_v2"));
             loaiCTAdapter = new LoaiCTAdapter(loaiCTS, getApplicationContext());
             recyclerView.setAdapter(loaiCTAdapter);
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
         } else if (name.equals("Môn Hóa")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 1"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 2"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 3"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Hóa số 1"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Hóa số 2"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Hóa số 3"));
             /*loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 4"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Hóa số 5"));*/
 
@@ -101,11 +101,11 @@ public class PhanLoaiDe extends AppCompatActivity implements setOnItemClick {
             loaiCTAdapter.setSetOnItemClickListener(PhanLoaiDe.this);
         } else if (name.equals("Môn Anh Văn")) {
             /////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~`///////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 1"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 2"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 3"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 4"));
-            loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 5"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Anh Văn số 1"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Anh Văn số 2"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Anh Văn số 3"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Anh Văn số 4"));
+            loaiCTS.add(new LoaiCT(R.drawable.cuckoo, "Đề mẫu Anh Văn số 5"));
             /*loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 6"));
             loaiCTS.add(new LoaiCT(R.drawable.logodtu, "Đề mẫu Anh Văn số 7"));*/
 
