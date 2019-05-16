@@ -34,7 +34,7 @@ public class ExamAdapter extends ArrayAdapter<Exam> {
         Exam exam = getItem(position);
         if (exam !=null){
             textView.setText(" " + exam.getName());
-            imageView.setImageResource(R.drawable.cuckoo);
+            imageView.setImageResource(R.drawable.test);
         }
         return convertView;
     }

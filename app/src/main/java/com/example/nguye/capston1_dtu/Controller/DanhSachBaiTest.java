@@ -53,10 +53,10 @@ public class DanhSachBaiTest extends AppCompatActivity implements setOnItemClick
 
     private void inView() {
         if (name.equals("Kiểm tra Toán")){  ///////////// TOAN //////////////
-            loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra số 1"));
-            loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra số 2"));
-            loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra số 3"));
-            loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra số 4"));
+            loaiDE.add(new LoaiCT(R.drawable.cuckoo, "Bài kiểm tra số 1"));
+            loaiDE.add(new LoaiCT(R.drawable.cuckoo, "Bài kiểm tra số 2"));
+            loaiDE.add(new LoaiCT(R.drawable.cuckoo, "Bài kiểm tra số 3"));
+            loaiDE.add(new LoaiCT(R.drawable.cuckoo, "Bài kiểm tra số 4"));
 
 
             loaiDeAdapter = new LoaiCTAdapter(loaiDE, getApplicationContext());
@@ -64,7 +64,7 @@ public class DanhSachBaiTest extends AppCompatActivity implements setOnItemClick
             loaiDeAdapter.setSetOnItemClickListener(DanhSachBaiTest.this);
 
         }else if (name.equals("Kiểm tra Vật Lý")){
-            loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra Ly số 1"));
+            loaiDE.add(new LoaiCT(R.drawable.cuckoo, "Bài kiểm tra Ly số 1"));
            /* loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra Ly số 2"));
             loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra Ly số 3"));
             loaiDE.add(new LoaiCT(R.drawable.logodtu, "Bài kiểm tra Ly số 4"));*/
